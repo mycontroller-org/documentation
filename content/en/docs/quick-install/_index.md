@@ -71,7 +71,7 @@ Prerequisites to setup MyController all-in-one
   ```
 
 * Access MyController server Web UI
-  * http://<your-host-ip> (example: http://192.168.1.21)
+  * `http://<host-ip>` (example: http://192.168.1.21)
 
 #### Restart
 ```
