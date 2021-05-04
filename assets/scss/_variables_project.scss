@@ -1,0 +1,27 @@
+/*
+
+Add styles or override variables from the theme here.
+
+*/
+
+$primary: #212427;
+$secondary: #06c;
+
+// $enable-gradients: false;
+// $enable-rounded: false;
+// $enable-shadows: false;
+
+// remove text logo
+.navbar-brand {
+  .text-uppercase {
+    display: none;
+  }
+}
+
+// logo style override
+.navbar-logo {
+  svg {
+    margin: 0 10px;
+    height: 38px !important;
+  }
+}
