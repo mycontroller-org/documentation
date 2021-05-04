@@ -25,4 +25,4 @@ docker buildx build \
   --progress=plain \
   --platform linux/arm/v6,linux/arm/v7,linux/arm64,linux/amd64 \
   --file docker/Dockerfile \
-  --tag ${IMAGE_CORE}:${IMAGE_TAG} .
+  --tag ${IMAGE_WEBSITE}:${IMAGE_TAG} .
