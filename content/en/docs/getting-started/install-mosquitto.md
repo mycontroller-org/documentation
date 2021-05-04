@@ -42,7 +42,7 @@ mkdir -p /opt/apps/mosquitto
 cd /opt/apps/mosquitto
 
 docker run -d --name mc_mosquitto \
-    -p 31883:1883 \
+    -p 1883:1883 \
     -p 9001:9001 \
     -v $PWD/mosquitto.conf:/mosquitto/config/mosquitto.conf \
     --restart unless-stopped \

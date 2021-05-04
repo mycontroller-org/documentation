@@ -11,7 +11,7 @@ description: ""
 * All services rely on centralized message bus. Which leads we can have micro service for each block shown above.
 * Most of the components based on a plugin approach. Other services can be included easily
 
-### Gateway:
+### Gateway
 * Gateway is a service that collects data from different networks. 
 Also can do changes on the target network.
 * Gateway is as plugin component, we can implement gateway for any provider
