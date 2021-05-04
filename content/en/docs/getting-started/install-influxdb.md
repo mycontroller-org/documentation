@@ -10,14 +10,21 @@ MyController supports InfluxDB 1.8.x or above
 
 InfluxDB can be installed in different way. Here we are focusing to setup it on docker and InfluxDB 1.8.4 version.
 
+{{< alert title="Note" >}}
+Assuming that you are running all the commands as a `root` user.
+
+If you are running from non-root user, you should include `sudo` in the beginning of the commands.
+{{< /alert >}}
+
+
 #### Generate influxdb.conf
 Detailed information is on [InfluxDB Website](https://docs.influxdata.com/influxdb/v1.8/administration/config/)
 
 ```
 # generate influxdb.conf
-sudo mkdir -p /opt/apps/influxdb
-sudo cd /opt/apps/influxdb
-sudo docker run --rm influxdb:1.8.4 influxd config > influxdb.conf
+mkdir -p /opt/apps/influxdb
+cd /opt/apps/influxdb
+docker run --rm influxdb:1.8.4 influxd config > influxdb.conf
 ```
 
 * (Optional) Steps to disable InfluxDB monitor
@@ -30,14 +37,14 @@ sudo docker run --rm influxdb:1.8.4 influxd config > influxdb.conf
 
 ##### Install
 {{< alert title="Variable $PWD" >}}
-`$PWD` is a Present Working Directory.
+`$PWD` is a `Print Working Directory`.
 {{< /alert >}}
 
 ```
-sudo mkdir -p /opt/apps/influxdb/influxdb_data
-sudo cd /opt/apps/influxdb
+mkdir -p /opt/apps/influxdb/influxdb_data
+cd /opt/apps/influxdb
 
-sudo docker run --detach --name mc_influxdb \
+docker run --detach --name mc_influxdb \
     --publish 8086:8086 \
     --volume $PWD/influxdb_data:/var/lib/influxdb \
     --volume $PWD/influxdb.conf:/etc/influxdb/influxdb.conf:ro \
@@ -49,7 +56,7 @@ sudo docker run --detach --name mc_influxdb \
 ##### Create a database for MyController usage in influxDB
 ```
 # enter inside running docker container
-$ sudo docker exec -it mc_influxdb /bin/sh
+$ docker exec -it mc_influxdb /bin/sh
 
 # influx
 Connected to http://localhost:8086 version 1.8.4
@@ -66,11 +73,11 @@ mycontroller
 
 ##### Restart
 ```
-sudo docker restart mc_influxdb
+docker restart mc_influxdb
 ```
 
 ##### Uninstall
 ```
-sudo docker stop mc_influxdb
-sudo docker rm mc_influxdb
+docker stop mc_influxdb
+docker rm mc_influxdb
 ```

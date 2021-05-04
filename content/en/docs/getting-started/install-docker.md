@@ -8,21 +8,28 @@ Docker can be installed in different way. Here it is explained to install it on 
 
 Follow the steps below to install docker on your Raspberry PI
 
+{{< alert title="Note" >}}
+Assuming that you are running all the commands as a `root` user.
+
+If you are running from non-root user, you should include `sudo` in the beginning of the commands.
+{{< /alert >}}
+
+
 ```
 # copy the installation script
 curl -fsSL https://get.docker.com -o get-docker.sh
 
 # execute the script
-sudo sh get-docker.sh
+sh get-docker.sh
 
 # enable the docker daemon
-sudo systemctl enable docker.service
+systemctl enable docker.service
 
 # start the docker daemon
-sudo systemctl start docker.service
+systemctl start docker.service
 
 # check the docker daemon is active
-sudo systemctl is-active docker.service
+systemctl is-active docker.service
 ```
 
 
@@ -30,5 +37,5 @@ sudo systemctl is-active docker.service
 ```
 # add a non-root user to the docker group
 # here the "pi" is a user
-sudo usermod -aG docker pi
+usermod -aG docker pi
 ```

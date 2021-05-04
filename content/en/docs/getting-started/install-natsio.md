@@ -10,9 +10,16 @@ MyController supports natsio 2.2.2 or above
 
 [nats.io](https://nats.io/) server can be installed in different way. Here we are focusing to setup it on docker and NatsIO 2.2.2 version.
 
+{{< alert title="Note" >}}
+Assuming that you are running all the commands as a `root` user.
+
+If you are running from non-root user, you should include `sudo` in the beginning of the commands.
+{{< /alert >}}
+
+
 ##### Install
 ```
-sudo docker run --detach --name mc_natsio \
+docker run --detach --name mc_natsio \
     --publish 4222:4222 \
     --env TZ="Asia/Kolkata" \
     --restart unless-stopped \
@@ -21,11 +28,11 @@ sudo docker run --detach --name mc_natsio \
 
 ##### Restart
 ```
-sudo docker restart mc_natsio
+docker restart mc_natsio
 ```
 
 ##### Uninstall
 ```
-sudo docker stop mc_natsio
-sudo docker rm mc_natsio
+docker stop mc_natsio
+docker rm mc_natsio
 ```

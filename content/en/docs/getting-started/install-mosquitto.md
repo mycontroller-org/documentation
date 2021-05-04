@@ -10,15 +10,22 @@ MyController tested on Mosquitto 1.6.9 or above
 
 [Mosquitto](https://mosquitto.org/) broker can be installed in different way. Here we are focusing to setup it on docker and Mosquitto 1.6.9 version.
 
+{{< alert title="Note" >}}
+Assuming that you are running all the commands as a `root` user.
+
+If you are running from non-root user, you should include `sudo` in the beginning of the commands.
+{{< /alert >}}
+
+
 #### mosquitto.conf
 Detailed information is on [Mosquitto Website](https://mosquitto.org/man/mosquitto-conf-5.html)
 
 ```
 # create mosquitto.conf
-sudo mkdir -p /opt/apps/mosquitto
-sudo cd /opt/apps/mosquitto
+mkdir -p /opt/apps/mosquitto
+cd /opt/apps/mosquitto
 
-sudo cat << EOF > mosquitto.conf
+cat << EOF > mosquitto.conf
 allow_anonymous true
 persistence false
 persistence_location /mosquitto/data/
@@ -27,14 +34,14 @@ EOF
 
 ##### Install
 {{< alert title="Variable $PWD" >}}
-`$PWD` is a Present Working Directory.
+`$PWD` is a `Print Working Directory`.
 {{< /alert >}}
 
 ```
-sudo mkdir -p /opt/apps/mosquitto
-sudo cd /opt/apps/mosquitto
+mkdir -p /opt/apps/mosquitto
+cd /opt/apps/mosquitto
 
-sudo docker run -d --name mc_mosquitto \
+docker run -d --name mc_mosquitto \
     -p 31883:1883 \
     -p 9001:9001 \
     -v $PWD/mosquitto.conf:/mosquitto/config/mosquitto.conf \
@@ -44,11 +51,11 @@ sudo docker run -d --name mc_mosquitto \
 
 ##### Restart
 ```
-sudo docker restart mc_mosquitto
+docker restart mc_mosquitto
 ```
 
 ##### Uninstall
 ```
-sudo docker stop mc_mosquitto
-sudo docker rm mc_mosquitto
+docker stop mc_mosquitto
+docker rm mc_mosquitto
 ```

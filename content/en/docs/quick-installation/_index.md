@@ -1,13 +1,13 @@
 ---
-title: "Quick Install"
-linkTitle: "Quick Install"
+title: "Quick Installation"
+linkTitle: "Quick Installation"
 weight: 3
 ---
 
 MyController.org 2.x can be installed in different way.
-Here we are going to focus on Quick Install.
+Here we are going to focus on Quick Installation.
 
-If quick install is not fulfil your requirements follow [Advanced Install](/docs/advanced-install/)
+If a quick installation is not fulfil your requirements follow [advanced Installation guide](/docs/advanced-installation/)
 
 ### Prerequisites
 Prerequisites to setup MyController all-in-one
@@ -17,17 +17,22 @@ Prerequisites to setup MyController all-in-one
   * [Mosquitto Installation Guide](/docs/getting-started/install-mosquitto)
   * [nats.io Installation Guide](/docs/getting-started/install-natsio)
 
-#### Install
-* create directory for MyController.org storage and other usage
+## Install on Linux
+{{< alert title="Note" >}}
+Assuming that you are running all the commands as a `root` user.
+
+If you are running from non-root user, you should include `sudo` in the beginning of the commands.
+{{< /alert >}}
+
+* create directory for MyController server storage and other usages
   ```
-  sudo mkdir -p /opt/apps/mycontroller/mc_home
+  mkdir -p /opt/apps/mycontroller/mc_home
   ```
 * Copy `mycontroller.yaml` file
   ```
-  sudo cd /opt/apps/mycontroller
+  cd /opt/apps/mycontroller
   
-  sudo curl \
-    https://raw.githubusercontent.com/mycontroller-org/backend/master/resources/default-all-in-one.yaml \
+  curl https://raw.githubusercontent.com/mycontroller-org/backend/master/resources/default-all-in-one.yaml \
     --output mycontroller.yaml
   ```
 
@@ -61,7 +66,7 @@ Prerequisites to setup MyController all-in-one
 
 * Start MyController server
   ```
-  sudo docker run --detach --name mycontroller \
+  docker run --detach --name mycontroller \
     --publish 80:8080 \
     --volume $PWD/mc_home:/mc_home \
     --volume $PWD/mycontroller.yaml:/app/mycontroller.yaml \
@@ -75,11 +80,11 @@ Prerequisites to setup MyController all-in-one
 
 #### Restart
 ```
-sudo docker restart mycontroller
+docker restart mycontroller
 ```
 
 #### Uninstall
 ```
-sudo docker stop mycontroller
-sudo docker rm mycontroller
+docker stop mycontroller
+docker rm mycontroller
 ```
