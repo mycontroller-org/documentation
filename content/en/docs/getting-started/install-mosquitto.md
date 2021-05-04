@@ -20,7 +20,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 #### mosquitto.conf
 Detailed information is on [Mosquitto Website](https://mosquitto.org/man/mosquitto-conf-5.html)
 
-```
+```bash
 # create mosquitto.conf
 mkdir -p /opt/apps/mosquitto
 cd /opt/apps/mosquitto
@@ -37,7 +37,7 @@ EOF
 `$PWD` is a `Print Working Directory`.
 {{< /alert >}}
 
-```
+```bash
 mkdir -p /opt/apps/mosquitto
 cd /opt/apps/mosquitto
 
@@ -50,12 +50,12 @@ docker run -d --name mc_mosquitto \
 ```
 
 ##### Restart
-```
+```bash
 docker restart mc_mosquitto
 ```
 
 ##### Uninstall
-```
+```bash
 docker stop mc_mosquitto
 docker rm mc_mosquitto
 ```

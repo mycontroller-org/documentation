@@ -28,5 +28,5 @@ In this document we are focusing installation on a docker setup.
 
 ### Install MyController.org
 
-* [Quick Install](/docs/quick-installation/)
-* [Advanced Install](/docs/advanced-installation/)
+* [Quick Installation](/docs/quick-installation/)
+* [Advanced Installation](/docs/advanced-installation/)

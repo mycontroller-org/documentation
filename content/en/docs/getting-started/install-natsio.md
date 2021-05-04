@@ -18,7 +18,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 
 
 ##### Install
-```
+```bash
 docker run --detach --name mc_natsio \
     --publish 4222:4222 \
     --env TZ="Asia/Kolkata" \
@@ -27,12 +27,12 @@ docker run --detach --name mc_natsio \
 ```
 
 ##### Restart
-```
+```bash
 docker restart mc_natsio
 ```
 
 ##### Uninstall
-```
+```bash
 docker stop mc_natsio
 docker rm mc_natsio
 ```

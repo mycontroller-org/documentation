@@ -20,27 +20,29 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 #### Generate influxdb.conf
 Detailed information is on [InfluxDB Website](https://docs.influxdata.com/influxdb/v1.8/administration/config/)
 
-```
-# generate influxdb.conf
-mkdir -p /opt/apps/influxdb
-cd /opt/apps/influxdb
-docker run --rm influxdb:1.8.4 influxd config > influxdb.conf
-```
+* generate `influxdb.conf`
+
+  ```bash
+  mkdir -p /opt/apps/influxdb
+  cd /opt/apps/influxdb
+
+  docker run --rm influxdb:1.8.4 influxd config > influxdb.conf
+  ```
 
 * (Optional) Steps to disable InfluxDB monitor
   * Monitor InfluxDB metrics will be enabled by default. It eats lot of disk space and CPU.
-  * on the generated influxdb.conf set `false` to `store-enabled`
-```
-[monitor]
-  store-enabled = false
-```
+  * on the generated `influxdb.conf` set `false` to `store-enabled`, available under `monitor`
+  ```toml
+  [monitor]
+    store-enabled = false
+  ```
 
 ##### Install
 {{< alert title="Variable $PWD" >}}
 `$PWD` is a `Print Working Directory`.
 {{< /alert >}}
 
-```
+```bash
 mkdir -p /opt/apps/influxdb/influxdb_data
 cd /opt/apps/influxdb
 
@@ -54,8 +56,13 @@ docker run --detach --name mc_influxdb \
 ```
 
 ##### Create a database for MyController usage in influxDB
-```
-# enter inside running docker container
+* enter inside running docker container
+* execute `influx` command inside the influx container as follows
+* create a database by running `create database mycontroller`
+* show available databases by running `show databases`
+* type `exit` two time, one exits from influx client shell, second exits from the docker container
+
+```bash
 $ docker exec -it mc_influxdb /bin/sh
 
 # influx
@@ -72,12 +79,12 @@ mycontroller
 ```
 
 ##### Restart
-```
+```bash
 docker restart mc_influxdb
 ```
 
 ##### Uninstall
-```
+```bash
 docker stop mc_influxdb
 docker rm mc_influxdb
 ```

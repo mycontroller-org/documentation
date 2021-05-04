@@ -15,7 +15,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 {{< /alert >}}
 
 
-```
+```bash
 # copy the installation script
 curl -fsSL https://get.docker.com -o get-docker.sh
 
@@ -34,8 +34,8 @@ systemctl is-active docker.service
 
 
 * Optional steps - If you plan to play docker command on user
-```
-# add a non-root user to the docker group
-# here the "pi" is a user
-usermod -aG docker pi
-```
+  ```bash
+  # add a non-root user to the docker group
+  # here the "pi" is a user
+  usermod -aG docker pi
+  ```
