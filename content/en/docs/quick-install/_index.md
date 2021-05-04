@@ -30,6 +30,23 @@ Prerequisites to setup MyController all-in-one
     https://raw.githubusercontent.com/mycontroller-org/backend/master/resources/default-all-in-one.yaml \
     --output mycontroller.yaml
   ```
+
+* Update `influxdb_v1_8` configuration as follows in your `mycontroller.yaml`
+  * **influxdb** should be **installed** and **running**
+  * **Important** `uri` - must be updated with your host ip address
+  ```yaml
+  - name: influxdb_v1_8
+    type: influxdb_v2
+    uri: http://192.168.1.21:8086 # must be updated with your host ip address
+    token: 
+    username:
+    password:
+    organization: 
+    bucket: mycontroller
+    batch_size:
+    flush_interval: 5s
+  ```
+
 * Optional - Update `bus` configuration as follows in your `mycontroller.yaml`, if you plan to use external bus
   * **nats.io server** should be **installed** and **running**
   * **Important** `server_url` - must be updated with your host ip address
@@ -45,13 +62,16 @@ Prerequisites to setup MyController all-in-one
 * Start MyController server
   ```
   sudo docker run --detach --name mycontroller \
-    --publish 8080:8080 \
+    --publish 80:8080 \
     --volume $PWD/mc_home:/mc_home \
     --volume $PWD/mycontroller.yaml:/app/mycontroller.yaml \
     --env TZ="Asia/Kolkata" \
     --restart unless-stopped \
     quay.io/mycontroller-org/all-in-one:master
   ```
+
+* Access MyController server Web UI
+  * http://<your-host-ip> (example: http://192.168.1.21)
 
 #### Restart
 ```
