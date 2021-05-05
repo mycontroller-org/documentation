@@ -19,78 +19,64 @@ To know more about MySensors network [follow this link](https://www.mysensors.or
   * get node info
   * discover nodes
 
-### MQTT Gateway Sample configuration
-{{< alert title="Note" >}}
-The `id` attribute can not be changed later
-{{< /alert >}}
+### Common Configuration
 * Form view
-  ![gateway-mysensors](/doc-images/gateway-mysensors.png)
+  ![gateway-mysensors-provider](/doc-images/gateway-provider-mysensors.png)
 
 * YAML View
   ```yaml
-  id: mysensor # (1)
-  description: MySensors gateway
-  enabled: true # (2)
-  reconnectDelay: 15s # (3)
   provider:
-    type: mysensors_v2 # (4)
+    type: mysensors_v2 # (1)
+    enableInternalMessageAck: true # (2)
+    enableStreamMessageAck: false # (3)
+    retryCount: 3 # (4)
     timeout: 1s # (5)
-    retryCount: 3 # (6)
-    enableInternalMessageAck: true # (7)
-    enableStreamMessageAck: false #(8)
-    protocol:
-      type: mqtt # (9)
-      broker: tcp://192.168.1.21:1883 # (10)
-      insecureSkipVerify: false # (11)
-      username: '' # (12)
-      password: '' # (13) 
-      qos: 0 # (14)
-      subscribe: out_rfm69/# # (15)
-      publish: in_rfm69 # (16)
-      transmitPreDelay: 15ms # (17)
-      reconnectDelay: 30s # (18)      
-  messageLogger:
-    type: file_logger # (19)
-    flushInterval: 5s # (20)
-    logRotateInterval: 6h # (21)
-    maxAge: 24h # (22)
-    maxBackup: 3 # (23)
-    maxSize: 1MiB # (24)
-  labels: # (25)
-    location: core # (26)
   ```
+  1. `type` should be selected as `mysensors_v2`
+  2. `enableInternalMessageAck` enable acknowledgement for internal messages
+  3. `enableStreamMessageAck` enable acknowledgement for streaming messages. ie: OTA/firmware messages  
+  4. `retryCount` - if do not receive the acknowledgement on the specified `timeout`, keeps resend the message till it reaches the retryCount 
+  5. `timeout` - wait for the acknowledgement till this timeout
 
-  ###### Configuration details
-  1. `id` of a gateway. You cannot modify this field later
-  2. `enabled` - You can disable to disconnect from provider network.
-  3. `reconnectDelay` - for some reason disconnected from the provider network, will be reconnected automatically after this delay
-  4. `provider.type` says the type of the provider
-  5. `provider.timeout` wait for the acknowledgement till this timeout
-  6. `provider.retryCount` if do not receive acknowledgement on the specified `provider.timeout` keep resend the message till reaches this count
-  7. `provider.enableInternalMessageAck` enable acknowledgement for internal messages
-  8. `provider.enableStreamMessageAck` enable acknowledgement for streaming messages. ie: firmware messages
-  9. `provider.protocol.type` MySensors supports 3 type of protocols. `MQTT`, `Serial`, and `Ethernet`
-  10. `provider.protocol.broker` mqtt broker url
-  11. `provider.protocol.insecureSkipVerify` if you want to skip the insecure ssl, enable this option
-  12. `provider.protocol.username` username of the mqtt broker. if it is `anonymous` leave it as a blank
-  13. `provider.protocol.password` if username supplied, password should be supplied. otherwise leave it as a blank
-  14. `provider.protocol.qos` MQTT qos
-  15. `provider.protocol.subscribe` topic to be subscribed to get messages from MySensors gateway
-  16. `provider.protocol.publish` topic to be used to post data from MyController to MySensors network
-  17. `provider.protocol.transmitPreDelay` wait till this time and sends the data to provider network
-  18. `provider.protocol.reconnectDelay` this field will be deprecated
-  19. `messageLogger.type` message logger type. support `file_logger` and `none`
-  20. `messageLogger.flushInterval` how long once received message to be dumped to disk from memory
-  21. `messageLogger.logRotateInterval` creates new file after this interval
-  22. `messageLogger.maxSize` if the size reaches the `maxSize`, creates new file
-  23. `messageLogger.maxAge`  if the age reaches the `maxAge`, creates new file
-  24. `messageLogger.maxBackup` retention files count
-  25. `labels` labels are a key value pair used across the system
-  26. `labels.location` this particular gateway loaded to a gateway where the label matches
+### Protocols
+MySensors gateway supports the following protocols
+  - [MQTT](#protocol-configuration---mqtt)
+  - [Serial](#protocol-configuration---serial)
+  - [Ethernet](#protocol-configuration---ethernet)
 
-### Serial Gateway Sample configuration
-Restricted to only serial config. For other fields on the [MQTT Gateway Config](/docs/user-interface/resources/gateway-mysensors/#mqtt-gateway-sample-configuration)
+#### Protocol Configuration - MQTT
+* Form view
+  ![gateway-mysensors](/doc-images/gateway-mysensors-mqtt.png)
 
+* YAML View
+  ```yaml
+  provider:
+    protocol:
+      type: mqtt # (1)
+      transmitPreDelay: 15ms # (2)
+      broker: tcp://192.168.1.21:1883 # (3)
+      insecureSkipVerify: false # (4)
+      username: '' # (5)
+      password: '' # (6)
+      subscribe: out_rfm69/# # (7)
+      publish: in_rfm69 # (8)
+      qos: 0 # (9)
+  ```
+  1. `type` type of the protocol. here it should be `mqtt`
+  2. `transmitPreDelay` - wait till this time to avoid collision and sends the data to provider network
+  3. `broker` mqtt broker url
+  4. `insecureSkipVerify` if you want to skip the insecure ssl, enable this option
+  5. `username` username of the mqtt broker. if it is `anonymous` leave it as a blank
+  6. `password` if username supplied, password should be supplied. otherwise leave it as a blank
+  7. `subscribe` topic to be subscribed to get messages from MySensors gateway
+  8. `publish` topic to be used to post data from MyController to MySensors network
+  9. `qos` MQTT qos
+
+{{< alert title="Note" >}}
+It is important to include `/#` at the end of `subscription` topic to receive from all the nodes. *example: `out_rfm69/#`*
+{{< /alert >}}
+
+#### Protocol Configuration - Serial
 * Form view
   ![gateway-mysensors-serial](/doc-images/gateway-mysensors-serial.png)
 
@@ -103,14 +89,12 @@ Restricted to only serial config. For other fields on the [MQTT Gateway Config](
       portname: /dev/ttyUSB0 # (3)
       baudrate: 115200 # (4)
   ```
-###### Configuration details
-1. `provider.protocol.type` type of the gateway. here it is serial gateway
-2. `provider.protocol.transmitPreDelay`  wait till this time and sends the data to provider network, can be used to avoid collision on the provider network
-3. `provider.protocol.portname` name of the serial port
-4. `provider.protocol.baudrate` baud rate of the serial port
+  1. `type` of the protocol. here it should be `serial`
+  2. `transmitPreDelay` - wait till this time to avoid collision and sends the data to provider network
+  3. `portname` name of the serial port
+  4. `baudrate` baud rate of the serial port
 
-### Ethernet Gateway Sample configuration
-Restricted to only ethernet config. For other fields on the [MQTT Gateway Config](/docs/user-interface/resources/gateway-mysensors/#mqtt-gateway-sample-configuration)
+#### Protocol Configuration - Ethernet
 * Form view
   ![gateway-mysensors-serial](/doc-images/gateway-mysensors-ethernet.png)
 
@@ -120,10 +104,10 @@ Restricted to only ethernet config. For other fields on the [MQTT Gateway Config
     protocol:
       type: ethernet # (1)
       transmitPreDelay: 15ms # (2)
-      server: tcp://192.168.1.42 # (3)
+      server: tcp://192.168.1.42:5000 # (3)
+      insecureSkipVerify: false # (4)
   ```
-
-###### Configuration details
-1. `provider.protocol.type` type of the gateway. here it is serial gateway
-2. `provider.protocol.transmitPreDelay`  wait till this time and sends the data to provider network, can be used to avoid collision on the provider network
-3. `provider.protocol.server` tcp server url
+  1. `type` of the protocol. here it should be `ethernet`
+  2. `transmitPreDelay` - wait till this time to avoid collision and sends the data to provider network
+  3. `server` ethernet server address with port
+  4. `insecureSkipVerify` if you want to skip the insecure ssl, enable this option
