@@ -4,7 +4,12 @@ linkTitle: "Overview"
 weight: 1
 description: ""
 ---
-MyController.org is an IoT automation controller for home, office or any place. MyController.org is designed to run with limited resources. It can run on the first generation Raspberry PI.
+MyController is an IoT automation controller for home, office or any place.
+MyController is designed to run with a limited resources.
+It can run on the first generation Raspberry PI.
+
+There is no internet requirement for MyController.
+You can run it on a private environment
 
 MyController 2.x is completely redesigned.
 
