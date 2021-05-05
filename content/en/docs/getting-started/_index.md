@@ -18,15 +18,13 @@ So it is mandatory to run it on any container orchestration setup.
 * Optional
   * MongoDB - for storage data 
 
-In this document we are focusing installation on a docker setup.
-
-### Dependencies Installation
+## Dependencies Installation
 * [Docker](/docs/getting-started/install-docker/)
 * [InfluxDB](/docs/getting-started/install-influxdb/)
 * [natsio Bus](/docs/getting-started/install-natsio/)
 * [Mosquitto MQTT Broker](/docs/getting-started/install-mosquitto/)
 
-### Install MyController.org
+## Install MyController.org
 
 * [Quick Installation](/docs/quick-installation/)
 * [Advanced Installation](/docs/advanced-installation/)

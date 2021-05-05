@@ -8,18 +8,25 @@ weight: 3
 
 To know more about MySensors network [follow this link](https://www.mysensors.org/about/network)
 
-#### Key points
-* In a network MySensors can have 254 nodes
+## Provider Specific key points
+* In a network MySensors can have maximum of 254 nodes
 * node id `0` is always a gateway node
 * node id `1` to `254` can be allocatable to any node
-* Notable supported actions in MyController
-  * `OTA`features
-  * `reboot`
-  * `reset`
-  * get node info
+* Supported features in MyController
+  * `OTA`features / Firmware update
+  * `reboot` a node
+  * `reset` a node
+  * get a node info
   * discover nodes
+  * `Heartbeat` request
+  * Response to internal message like `I_TIME`, `I_CONFIG`, `I_ID_REQUEST`
+  * Assigns NodeId if nodeId set as `AUTO` on a node
 
-### Common Configuration
+### Not implemented / supported features (that is supported on MyController 1.x)
+  * Handle sleeping nodes
+  * There is no node alive check
+
+## Common Configuration
 * Form view
   ![gateway-mysensors-provider](/doc-images/gateway-provider-mysensors.png)
 
@@ -38,13 +45,13 @@ To know more about MySensors network [follow this link](https://www.mysensors.or
   4. `retryCount` - if do not receive the acknowledgement on the specified `timeout`, keeps resend the message till it reaches the retryCount 
   5. `timeout` - wait for the acknowledgement till this timeout
 
-### Protocols
+## Protocols
 MySensors gateway supports the following protocols
   - [MQTT](#protocol-configuration---mqtt)
   - [Serial](#protocol-configuration---serial)
   - [Ethernet](#protocol-configuration---ethernet)
 
-#### Protocol Configuration - MQTT
+### Protocol Configuration - MQTT
 * Form view
   ![gateway-mysensors](/doc-images/gateway-mysensors-mqtt.png)
 
@@ -76,7 +83,7 @@ MySensors gateway supports the following protocols
 It is important to include `/#` at the end of `subscription` topic to receive from all the nodes. *example: `out_rfm69/#`*
 {{< /alert >}}
 
-#### Protocol Configuration - Serial
+### Protocol Configuration - Serial
 * Form view
   ![gateway-mysensors-serial](/doc-images/gateway-mysensors-serial.png)
 
@@ -94,7 +101,7 @@ It is important to include `/#` at the end of `subscription` topic to receive fr
   3. `portname` name of the serial port
   4. `baudrate` baud rate of the serial port
 
-#### Protocol Configuration - Ethernet
+### Protocol Configuration - Ethernet
 * Form view
   ![gateway-mysensors-serial](/doc-images/gateway-mysensors-ethernet.png)
 

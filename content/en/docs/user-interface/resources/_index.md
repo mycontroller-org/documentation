@@ -8,20 +8,20 @@ weight: 1
 
 Resources are the key components in MyController.
 
-### Gateway
+## Gateway
 Gateway is the entry and exit point in MyController.
 It connects your network and MyController.
 
-### Node
+## Node
 Node is a kind of end point in the sensor world.
 
-### Source
+## Source
 Source is a single or group of `fields`
 
-### Field
+## Field
 Field is a final measurement point
 
-### Example
+## Example
 * Take a couple ESP8266 boards
 * Those ESP8266 boards can be operated via `MQTT` protocol
 * Each board has sensors like, `temperature`, `humidity`, `relay`, `push button`, etc.,

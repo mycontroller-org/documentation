@@ -6,7 +6,7 @@ weight: 6
 System Monitoring is an internal plugin developed and maintained by MyController
 
 
-### Configuration
+## Configuration
 * Form view
   ![gateway-system-monitoring](/doc-images/gateway-system-monitoring.png)
 * YAML View
@@ -20,7 +20,7 @@ System Monitoring is an internal plugin developed and maintained by MyController
   2. `hostIdMap` - is a group of key value map
   3. `hostConfigMap` configurations of monitoring resources
 
-#### Host ID Map Configuration
+### Host ID Map Configuration
 Host ID Map (`hostIdMap`) is used to map the real host id with a friendly name
 
 Samples:
@@ -31,7 +31,7 @@ a574ac8d-4c9f-40d6-b0ce-bbc7d98cd87d: rpi_2
 Here `be0164ad-6f25-4448-b691-567946392b47` is the actual id of the host and it is mapped with `rpi_1`.
 If data received from this node, The node name will be as `rpi_1`
 
-#### Host Config Map Configuration
+### Host Config Map Configuration
 Host Config Map (`hostConfigMap`) is used to configure a specific node(s)
 
 ```yaml
@@ -105,7 +105,7 @@ rpi_2: # (1)
 6. `process` configurations
 7. `temperature` configurations
 
-##### CPU Configurations
+#### CPU Configurations
 ```yaml
 cpu:
   interval: 1m # (1)
@@ -116,7 +116,7 @@ cpu:
 2. `cpuDisabled` - disable overall CPU metrics data
 3. `perCpuDisabled` - disable individual CPU(s) metrics data
 
-##### Disk Configurations
+#### Disk Configurations
 ```yaml
 disk:
   interval: 1h # (1)
@@ -139,7 +139,7 @@ disk:
 6. `name` - will be used as field name
 7. `path` - disk path used to measure the usage details
 
-##### Memory Configurations
+#### Memory Configurations
 ```yaml
 memory:
   interval: 1m # (1)
@@ -150,7 +150,7 @@ memory:
 2. `memoryDisabled` - enable/disable memory measurement
 3. `swapMemoryDisabled` - enable/disable swap measurement
 
-##### Process Configurations
+#### Process Configurations
 ```yaml
 process:
   interval: 1m # (1)

@@ -5,11 +5,13 @@ weight: 3
 ---
 
 MyController.org 2.x can be installed in different way.
-Here we are going to focus on Quick Installation.
+Here we are going to focus on All-In-One setup.
 
-If a quick installation is not fulfil your requirements follow [advanced Installation guide](/docs/advanced-installation/)
+If the quick installation is not fulfil your requirements follow [advanced Installation guide](/docs/advanced-installation/)
 
-### Prerequisites
+To know more about All-In-One setup [follow this guide](/docs/overview/#all-in-one-bundle-and-setup)
+
+## Prerequisites
 Prerequisites to setup MyController all-in-one
 * [Docker Installation Guide](/docs/getting-started/install-docker)
 * [InfluxDB Installation Guide](/docs/getting-started/install-influxdb)
@@ -18,6 +20,8 @@ Prerequisites to setup MyController all-in-one
   * [nats.io Installation Guide](/docs/getting-started/install-natsio)
 
 ## Install on Linux
+In this document we are focusing installation on a docker setup.
+
 {{< alert title="Note" >}}
 Assuming that you are running all the commands as a `root` user.
 
@@ -78,12 +82,12 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 * Access MyController server Web UI
   * `http://<host-ip>` (example: http://192.168.1.21)
 
-#### Restart
+### Restart
 ```bash
 docker restart mycontroller
 ```
 
-#### Uninstall
+### Uninstall
 ```bash
 docker stop mycontroller
 docker rm mycontroller

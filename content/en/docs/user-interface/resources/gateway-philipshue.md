@@ -8,7 +8,7 @@ weight: 5
 
 To know more about PhilipsHue developer API [follow this link](https://developers.meethue.com/)
 
-### Configuration
+## Configuration
 * Form view
   ![gateway-philipshue](/doc-images/gateway-philipshue.png)
 

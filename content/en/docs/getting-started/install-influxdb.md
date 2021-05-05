@@ -17,7 +17,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 {{< /alert >}}
 
 
-#### Generate influxdb.conf
+### Generate influxdb.conf
 Detailed information is on [InfluxDB Website](https://docs.influxdata.com/influxdb/v1.8/administration/config/)
 
 * generate `influxdb.conf`
@@ -37,7 +37,7 @@ Detailed information is on [InfluxDB Website](https://docs.influxdata.com/influx
     store-enabled = false
   ```
 
-##### Install
+### Install
 {{< alert title="Variable $PWD" >}}
 `$PWD` is a `Print Working Directory`.
 {{< /alert >}}
@@ -55,7 +55,7 @@ docker run --detach --name mc_influxdb \
     influxdb:1.8.4
 ```
 
-##### Create a database for MyController usage in influxDB
+### Create a database for MyController usage in influxDB
 * enter inside running docker container
 * execute `influx` command inside the influx container as follows
 * create a database by running `create database mycontroller`
@@ -78,12 +78,12 @@ mycontroller
 # exit
 ```
 
-##### Restart
+### Restart
 ```bash
 docker restart mc_influxdb
 ```
 
-##### Uninstall
+### Uninstall
 ```bash
 docker stop mc_influxdb
 docker rm mc_influxdb

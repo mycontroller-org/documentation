@@ -17,7 +17,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 {{< /alert >}}
 
 
-##### Install
+### Install
 ```bash
 docker run --detach --name mc_natsio \
     --publish 4222:4222 \
@@ -26,12 +26,12 @@ docker run --detach --name mc_natsio \
     nats:2.2.2-alpine
 ```
 
-##### Restart
+### Restart
 ```bash
 docker restart mc_natsio
 ```
 
-##### Uninstall
+### Uninstall
 ```bash
 docker stop mc_natsio
 docker rm mc_natsio

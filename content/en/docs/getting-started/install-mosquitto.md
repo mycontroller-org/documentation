@@ -17,7 +17,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 {{< /alert >}}
 
 
-#### mosquitto.conf
+### mosquitto.conf
 Detailed information is on [Mosquitto Website](https://mosquitto.org/man/mosquitto-conf-5.html)
 
 ```bash
@@ -32,7 +32,7 @@ persistence_location /mosquitto/data/
 EOF
 ```
 
-##### Install
+### Install
 {{< alert title="Variable $PWD" >}}
 `$PWD` is a `Print Working Directory`.
 {{< /alert >}}
@@ -49,12 +49,12 @@ docker run -d --name mc_mosquitto \
     eclipse-mosquitto:1.6.9
 ```
 
-##### Restart
+### Restart
 ```bash
 docker restart mc_mosquitto
 ```
 
-##### Uninstall
+### Uninstall
 ```bash
 docker stop mc_mosquitto
 docker rm mc_mosquitto

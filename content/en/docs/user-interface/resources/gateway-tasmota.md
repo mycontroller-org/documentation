@@ -6,7 +6,7 @@ weight: 4
 
 [Tasmota](https://tasmota.github.io/docs/) is an Open source firmware for ESP8266 devices
 
-### Common Configuration
+## Common Configuration
 * Form view
   ![gateway-provider-tasmota](/doc-images/gateway-provider-tasmota.png)
 
@@ -17,11 +17,11 @@ weight: 4
   ```
   1. `type` should be selected as `tasmota`
 
-### Protocols
+## Protocols
 Tasmota gateway supports the following protocols
   - [MQTT](#protocol-configuration---mqtt)
 
-#### Protocol Configuration - MQTT
+### Protocol Configuration - MQTT
 * Form view
   ![gateway-tasmota-mqtt](/doc-images/gateway-tasmota-mqtt.png)
 

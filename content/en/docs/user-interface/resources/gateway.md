@@ -4,14 +4,14 @@ linkTitle: "Gateway"
 weight: 2
 ---
 
-MyController supports different type is providers network.
+MyController supports different type of providers network.
 Each network can be connected to MyController via a gateway.
 
 Gateway can be added/updated/deleted from the `Resources >> Gateway` page
 
-### [Supported Providers list](/docs/overview/#supported-providers)
+## [Supported Providers list](/docs/overview/#supported-providers)
 
-### Common Configurations
+## Common Configurations
 * Form View
   ![gateway-settings](/doc-images/gateway-settings.png)
 
@@ -35,11 +35,29 @@ Gateway can be added/updated/deleted from the `Resources >> Gateway` page
 The `id` field can not be changed later
 {{< /alert >}}
 
-### Provider Configurations
+
+### Power of the labels
+We can restrict to load a gateway to the specific host.
+
+For example you are running gateway service on multiple hosts 
+and all the gateway service connected to MyController via message bus.
+you have connected a serial port on `Host B`.
+When you add a gateway configuration on MyController, it sends the configuration details to all the gateway listener services.
+So all the gateway listeners are try to look that serial port on their hosts. expect from `Host B` all other gateway reports failed to load. To avoid these kind of situation, we have introduced `labels`.
+When we start a gateway service on a host, include label based filter.
+That gateway service listens only it is own configuration.
+
+![gateway setup](/doc-images/gateway-setup.png)
+
+In the above setup, if we include labels as `location=gw2` on the configuration, It loads on the `Host C` gateway service.
+Other gateways from the different hosts will ignore this configuration.
+
+
+## Provider Configurations
 * [MySensors](/docs/user-interface/resources/gateway-mysensors/)
 * [Tasmota](/docs/user-interface/resources/gateway-tasmota/)
 
-### Message Logger Configurations
+## Message Logger Configurations
 Message logger is recording received and transmitted messages.
 
 Type of `Message Logger`
