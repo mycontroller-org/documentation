@@ -2,8 +2,8 @@
 title: "Overview"
 linkTitle: "Overview"
 weight: 1
-description: ""
 ---
+
 MyController is an IoT automation controller for home, office or any place.
 MyController is designed to run with a limited resources.
 It can run on the first generation Raspberry PI.

@@ -4,5 +4,8 @@ linkTitle: "Documentation"
 weight: 20
 menu:
   main:
-    weight: 20
+    name: "Documentation"
+    pre: "<i class='fas fa-book fa-lg'></i>"
+    url: "/docs/"
+    weight: 1
 ---

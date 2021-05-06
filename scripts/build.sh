@@ -7,7 +7,8 @@ git submodule update --init --recursive
 yarn install
 
 # build
-hugo -D
+# HUGO_ENV="production", enables google Analytics
+env HUGO_ENV="production" hugo -D
 
 # container registry
 REGISTRY='quay.io/mycontroller-org'

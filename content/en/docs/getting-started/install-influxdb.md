@@ -2,13 +2,15 @@
 title: "Install InfluxDB"
 linkTitle: "Install InfluxDB"
 weight: 2
+
+influx_version: 1.8.4
 ---
 
 {{< alert title="Supported Versions" >}}
 MyController supports InfluxDB 1.8.x or above
 {{< /alert >}}
 
-InfluxDB can be installed in different way. Here we are focusing to setup it on docker and InfluxDB 1.8.4 version.
+InfluxDB can be installed in different way. Here we are focusing to setup it on docker and InfluxDB {{ $.Params "influx_version" }} version.
 
 {{< alert title="Note" >}}
 Assuming that you are running all the commands as a `root` user.
