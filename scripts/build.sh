@@ -12,7 +12,7 @@ env HUGO_ENV="production" hugo -D
 
 # container registry
 REGISTRY='quay.io/mycontroller-org'
-IMAGE_WEBSITE="${REGISTRY}/website"
+IMAGE_WEBSITE="${REGISTRY}/documentation"
 IMAGE_TAG=`git rev-parse --abbrev-ref HEAD`
 
 # debug lines
