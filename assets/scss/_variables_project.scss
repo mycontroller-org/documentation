@@ -9,13 +9,12 @@ $primary: #212427;
 $success: #06c;
 
 //$enable-gradients: false;
-$enable-rounded: false;
+//$enable-rounded: false;
 //$enable-shadows: false;
 
 //$td-enable-google-fonts: false;
 $google_font_name: "Montserrat";
 $google_font_family: "Montserrat:300,300i,400,400i,700,700i";
-
 
 // remove text logo
 .navbar-brand {
@@ -30,4 +29,9 @@ $google_font_family: "Montserrat:300,300i,400,400i,700,700i";
     margin: 0 10px;
     height: 38px !important;
   }
+}
+
+.btn-lg,
+.btn-group-lg > .btn {
+  border-radius: 7px !important;
 }
