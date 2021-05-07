@@ -55,7 +55,7 @@ languages:
     menu:
       main:
       - name: "MyController 1.x"
-        url: "https://mycontroller.org"
+        url: "https://v1.mycontroller.org"
         weight: -10
   
       - name: "Forum"
@@ -79,7 +79,7 @@ languages:
     menu:
       main:
       - name: "MyController 1.x"
-        url: "https://mycontroller.org"
+        url: "https://v1.mycontroller.org"
         weight: -10
   
       - name: மன்றம்
