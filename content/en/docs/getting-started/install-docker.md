@@ -4,13 +4,12 @@ linkTitle: "Install Docker"
 weight: 1
 ---
 
-Docker can be installed in different way. Here it is explained to install it on Raspberry PI with Raspbian OS
-
+Docker can be installed in different way.
+Here it is explained to install it on Raspberry PI with Raspbian OS<br>
 Follow the steps below to install docker on your Raspberry PI
 
 {{< alert title="Note" >}}
-Assuming that you are running all the commands as a `root` user.
-
+Assuming that you are running all the commands as a `root` user.<br>
 If you are running from non-root user, you should include `sudo` in the beginning of the commands.
 {{< /alert >}}
 

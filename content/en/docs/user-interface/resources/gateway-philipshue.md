@@ -4,8 +4,7 @@ linkTitle: "Gateway PhilipsHue"
 weight: 5
 ---
 
-[PhilipsHue](https://www.philips-hue.com/en-in) is smart home lighting
-
+[PhilipsHue](https://www.philips-hue.com/en-in) is smart home lighting.<br>
 To know more about PhilipsHue developer API [follow this link](https://developers.meethue.com/)
 
 ## Configuration

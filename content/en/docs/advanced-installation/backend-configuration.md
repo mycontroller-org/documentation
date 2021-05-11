@@ -4,9 +4,8 @@ linkTitle: "Backend Configuration"
 weight: 1
 ---
 
-MyController backend configurations are loaded at the time of startup.
-Configurations should be in the **[YAML](https://yaml.org/)** file format.
-
+MyController backend configurations are loaded at the time of startup.<br>
+Configurations should be in the **[YAML](https://yaml.org/)** file format.<br>
 Samples are available in the [source code repository](https://github.com/mycontroller-org/backend/tree/master/resources)
 
 {{< alert title="Note">}}
@@ -205,17 +204,15 @@ It keeps all the configuration data in the memory(RAM).
 Dumps all the data into the disk on a specified interval.
 When MyController start up, loads all the data from the disk to memory.
 
-We can reduce the number of writes to disk on configurations change.
-This can increase the life time of the disk.
-This is very good choice for a tiny hardwares(ie: Raspberry PI).
-
-In-Memory database will be faster as the configurations are in memory(RAM).
+* We can reduce the number of writes to disk on configurations change.
+  This can increase the life time of the disk.
+* This is very good choice for a tiny hardwares(ie: Raspberry PI).
+* In-Memory database will be faster as the configurations are in memory(RAM).
 
 {{< alert title="Important" color="danger">}}
-(assuming dump enabled)
-When the MyController server terminated gracefully, dumps all the configuration data onto disk.
-So there will be no loss.
-
+**Assuming dump enabled**<br>
+When the MyController server terminated gracefully, dumps all the configuration data onto disk.<br>
+So there will be no loss.<br>
 However there will be some loss, if the service terminated forcefully.
 {{< /alert >}}
 
@@ -268,13 +265,12 @@ type: void_db
 2. `type` should be `void_db`
 
 ##### InfluxDB
-MyController uses InfluxDB to keep the metrics data. It can be local InfluxDB instance or can be in the cloud.
-
+MyController uses InfluxDB to keep the metrics data. It can be local InfluxDB instance or can be in the cloud.<br>
 MyController supports InfluxDB **1.8.4 or above** versions.
 
 {{< alert title="Note">}}
-Flux query supports for InfluxDB 1.8.x and InfluxDB 2.x, however there an **[issue on ARM architecture](https://github.com/influxdata/flux/issues/2505)** in `mean` and `query` functions
-
+Flux query supports for InfluxDB 1.8.x and InfluxDB 2.x, <br>
+however there is an **[issue on ARM architecture](https://github.com/influxdata/flux/issues/2505)** in `mean` and `query` functions<br>
 As a workaround, MyController uses two type of InfluxDB query clients.
 - `v1` - uses [InfluxQL](https://docs.influxdata.com/influxdb/v1.8/query_language/explore-data/) query language
 - `v2` - uses [Flux](https://docs.influxdata.com/influxdb/v2.0/query-data/get-started/) query language

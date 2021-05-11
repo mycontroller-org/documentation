@@ -4,7 +4,7 @@ linkTitle: "Gateway Configuration"
 weight: 2
 ---
 
-MyController gateway configurations are loaded at the time of startup.
+MyController gateway configurations are loaded at the time of startup.<br>
 Configurations should be in the **[YAML](https://yaml.org/)** file format.
 
 
@@ -32,7 +32,7 @@ bus:
   tls_insecure_skip_verify: false
   connection_timeout: 10s
 
-gateway: # (6)
+gateway:
   ids: []
   labels:
     location: external_gw1

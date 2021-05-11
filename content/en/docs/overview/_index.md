@@ -4,16 +4,15 @@ linkTitle: "Overview"
 weight: 1
 ---
 
-MyController is an IoT automation controller for home, office or any place.
+MyController is an IoT automation controller for home, office or any place.<br>
 MyController is designed to run with a limited resources.
-It can run on the first generation Raspberry PI.
-
+It can run on the first generation Raspberry PI.<br>
 There is no internet requirement for MyController.
 You can run it on a private environment
 
 MyController 2.x is completely redesigned.
 
-## Technologies
+## Technologies Used
 * Backend
   * [GoLang](https://golang.org/)
   * [Nats.io](https://nats.io/) - Message Bus
@@ -34,8 +33,7 @@ MyController 2.x is completely redesigned.
 ## [Architecture Guide](/docs/overview/architecture/)
 
 ## MyController Services and Bundles
-MyController has many services and all communicates via `Message Bus`.
-
+MyController has many services and all communicates via `Message Bus`.<br>
 Based on the services and use cases, MyController bundled as follows,
   - [All-In-One bundle](#all-in-one-bundle-and-setup)
   - [Core bundle](#core-bundle-and-setup)

@@ -7,8 +7,7 @@ weight: 3
 MyController.org 2.x can be installed in different way.
 Here we are going to focus on All-In-One setup.
 
-If the quick installation is not fulfil your requirements follow [advanced Installation guide](/docs/advanced-installation/)
-
+If the quick installation is not fulfil your requirements follow [advanced Installation guide](/docs/advanced-installation/)<br>
 To know more about All-In-One setup [follow this guide](/docs/overview/#all-in-one-bundle-and-setup)
 
 ## Prerequisites
@@ -23,8 +22,7 @@ Prerequisites to setup MyController all-in-one
 In this document we are focusing installation on a docker setup.
 
 {{< alert title="Note" >}}
-Assuming that you are running all the commands as a `root` user.
-
+Assuming that you are running all the commands as a `root` user.<br>
 If you are running from non-root user, you should include `sudo` in the beginning of the commands.
 {{< /alert >}}
 
@@ -40,11 +38,11 @@ If you are running from non-root user, you should include `sudo` in the beginnin
     --output mycontroller.yaml
   ```
 
-* Update `influxdb_v1_8` configuration as follows in your `mycontroller.yaml`
+* Update `influx_database` configuration as follows in your `mycontroller.yaml`
   * **influxdb** should be **installed** and **running**
   * **Important** `uri` - must be updated with your host ip address
     ```yaml
-    - name: influxdb_v1_8
+    - name: influx_database
       type: influxdb_v2
       uri: http://192.168.1.21:8086 # must be updated with your host ip address
       token: 
@@ -53,8 +51,15 @@ If you are running from non-root user, you should include `sudo` in the beginnin
       organization: 
       bucket: mycontroller
       batch_size:
-      flush_interval: 5s
+      flush_interval: 1s
     ```
+
+* Update `metrics` database to `influx_database`
+  ```yaml
+  database:
+    storage: memory_database
+    metrics: influx_database # <-- update this field to point influx database config
+  ```
 
 * Optional - Update `bus` configuration as follows in your `mycontroller.yaml`, if you plan to use external bus
   * **nats.io server** should be **installed** and **running**
@@ -81,6 +86,16 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 
 * Access MyController server Web UI
   * `http://<host-ip>` (example: http://192.168.1.21)
+
+### To see the logs
+* Prints all available logs
+  ```bash
+  docker logs mycontroller
+  ```
+* Prints and tails the logs, to get exit do `Ctrl+C`
+  ```bash
+  docker logs --follow mycontroller
+  ```
 
 ### Restart
 ```bash
