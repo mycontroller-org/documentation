@@ -1,7 +1,7 @@
 ---
 title: "Install Mosquitto MQTT Broker"
 linkTitle: "Install Mosquitto MQTT Broker"
-weight: 4
+weight: 5
 ---
 
 {{< alert title="Tested Versions" >}}

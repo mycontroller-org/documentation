@@ -1,7 +1,7 @@
 ---
 title: "Install Docker"
 linkTitle: "Install Docker"
-weight: 1
+weight: 2
 ---
 
 Docker can be installed in different way.

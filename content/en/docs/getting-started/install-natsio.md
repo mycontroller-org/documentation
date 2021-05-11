@@ -1,7 +1,7 @@
 ---
 title: "Install natsio"
 linkTitle: "Install natsio"
-weight: 3
+weight: 4
 ---
 
 {{< alert title="Supported Versions" >}}

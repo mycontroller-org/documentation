@@ -1,7 +1,7 @@
 ---
 title: "Install InfluxDB"
 linkTitle: "Install InfluxDB"
-weight: 2
+weight: 3
 
 influx_version: 1.8.4
 ---
@@ -11,8 +11,8 @@ MyController supports InfluxDB 1.8.x or above
 {{< /alert >}}
 
 {{< alert title="Warning" color="warning">}}
-In ARM v6, docker version of InfluxDB not started and no issue reported. Tested it on 1.8.4<br>
-We can directly install on the host system by following [this guide](#install-influxdb-on-the-host-system)
+In ARM v6, docker version of InfluxDB not started and no issues reported. Tested it on 1.8.4<br>
+We can directly install it on the host system by following [this guide](#install-influxdb-on-the-host-system)
 {{< /alert >}}
 
 InfluxDB can be installed in different way. Here we are focusing to setup it on docker and InfluxDB 1.8.4 version.

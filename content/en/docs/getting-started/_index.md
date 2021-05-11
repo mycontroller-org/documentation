@@ -28,3 +28,6 @@ So it is mandatory to run it on any container orchestration setup.
 
 * [Quick Installation](/docs/quick-installation/)
 * [Advanced Installation](/docs/advanced-installation/)
+
+## What Next?
+* [Hints](/docs/getting-started/hints/)
