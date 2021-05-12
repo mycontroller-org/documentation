@@ -29,8 +29,10 @@ Resource handler sends payload to the nodes, performs an actions on resource, op
 ### Email Handler
 Sends email to the recipients. Supports smtp server.
 
+##### Form View
 ![email handler](/doc-images/mc_email_handler.png)
 
+##### YAML View
 ```yaml
 type: email # (1)
 spec:
@@ -55,8 +57,10 @@ spec:
 Sends telegram message to persons and/or groups.<br>
 [Follow this guide to get the telegram token, chat_id and group_id](/docs/appendix/telegram/)<br>
 
+##### Form View
 ![telegram handler](/doc-images/mc_telegram_handler.png)
 
+##### YAML View
 ```yaml
 type: telegram # (1)
 spec:
@@ -78,7 +82,10 @@ Backup covers only the storage database and firmware's.<br>
 User has to handle metrics database backup/restore themselves.
 {{< /alert >}}
 
+##### Form View
 ![backup handler](/doc-images/mc_backup_handler.png)
+
+##### YAML View
 ```yaml
 type: backup # (1)
 spec:
