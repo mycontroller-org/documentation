@@ -53,7 +53,7 @@ spec:
 
 ### Telegram Handler
 Sends telegram message to persons and/or groups.<br>
-[Follow this guide to get the telegram token and chatId](/docs/appendix/telegram/)<br>
+[Follow this guide to get the telegram token, chat_id and group_id](/docs/appendix/telegram/)<br>
 
 ![telegram handler](/doc-images/mc_telegram_handler.png)
 
@@ -67,7 +67,7 @@ spec:
 ```
 1. `type` should be selected as `telegram`
 2. `token` of the telegram account
-3. `chatIds` - list of person or group ids
+3. `chatIds` - list of chat ids or group ids
 
 ### Backup Handler
 Backup handler performs backup operation and keeps the backup archives at the specified target location<br>
