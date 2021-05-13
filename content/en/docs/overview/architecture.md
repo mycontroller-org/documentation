@@ -18,7 +18,7 @@ Also can do changes on the target network.
 * [Supported providers list](/docs/overview/#supported-providers)
 
 
-## Message Processor
+## Gateway Message Processor
 * Collects data from a gateway and updates in storage and metrics database
 * Sends received data as events, will be used in other services (Task, Forward Payload, etc.,)
 
