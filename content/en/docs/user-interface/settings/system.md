@@ -1,7 +1,7 @@
 ---
 title: "System"
 linkTitle: "system"
-weight: 1
+weight: 2
 ---
 The system settings has the following configurations
   * [GEO Location](#geo-location)

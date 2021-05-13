@@ -34,3 +34,11 @@ $google_font_family: "Montserrat:300,300i,400,400i,700,700i";
 .btn {
   border-radius: 5px !important;
 }
+
+.td-content {
+  img {
+    border: 1px solid #dfdfdf !important;
+    border-radius: 3px !important;
+    // padding: 3px !important;
+  }
+}

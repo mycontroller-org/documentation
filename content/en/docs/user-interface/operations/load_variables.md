@@ -8,14 +8,13 @@ You can load any number of variables for the further operations.<br>
 
 ##### Form View
 ![load variables](/doc-images/load_variables.png)
-* `Variable Name` is used a internal reference for further operations
+* `Variable Name` is used a internal reference for further operations. should be unique.
 * Add new variable click `+` icon
 * To delete a variable click `-` icon
-* Entering the value on the value box itself considered as [String](#string) value.
 * By clicking edit icon of a value, can offer to select different [data types](#data-types).
 
 ##### YAML View
-In YAML view, the data is encoded with [base64](https://en.wikipedia.org/wiki/Base64) format
+In YAML view, the data is encoded with [base64](https://en.wikipedia.org/wiki/Base64) format to avoid syntax issues.
 ```yaml
 variables:
   water_level: >-
@@ -74,7 +73,6 @@ data:
     location: hall
   selector: current.value
 ```
-
 
 ## Selector
 Selector is dot(`.`) separated path used to select a value on the given resource.<br>
