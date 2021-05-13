@@ -12,3 +12,5 @@ menu:
 தமிழுக்கு மொழிபெயர்க்க தன்னார்வலர்கள் தேவை.<br>
 தங்களது விருப்பத்தை <u>[இங்கே பதிவு செய்யவும்.](https://github.com/mycontroller-org/documentation/issues/new)</u>
 நன்றி!
+
+[ஆங்கிலத்தில் தொடர.](/docs)
