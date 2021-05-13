@@ -9,11 +9,11 @@ Supports only for the `Field` resource.<br>
 * Navigate to `Operations >> Forward Payload`
 * Click on `Add` button
 
-### Form View
+##### Form View
 * On the `Source Field` and `Destination Field` type Field ID, displays matching ids as a dropdown.
   ![forward payload](/doc-images/forward_payload_add.png)
 
-### YAML View
+##### YAML View
 ```yaml
 id: forward_water_level # (1)
 description: Sends tank water level to display node # (2)

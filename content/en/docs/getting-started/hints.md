@@ -35,3 +35,9 @@ Across the system duration of the time follows the GoLand duration standards<br>
 {{< alert title="Note" color="primary" >}}
 Negative number are supported.
 {{< /alert >}}
+
+## Labels
+TBD
+
+## Quick ID
+TBD
