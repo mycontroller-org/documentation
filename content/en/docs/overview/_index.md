@@ -59,12 +59,11 @@ Based on the services and use cases, MyController bundled as follows,
 * You can have a multiple gateway services on a different hosts
 
 ## Supported Providers
+* [ESPHome](https://esphome.io/)
 * [MySensors.org](https://www.mysensors.org/)
-* [Tasmota](https://tasmota.github.io/)
 * [Philips Hue](https://www.philips-hue.com/en-in)
-* `System Monitoring` provided by MyController
-  * Metrics of CPU, Memory, Disk, process, etc.,
-
+* [System Monitoring](/docs/user-interface/resources/gateway-system-monitoring/)
+* [Tasmota](https://tasmota.github.io/)
 
 ## What next?
 * [Getting Started](/docs/getting-started/)

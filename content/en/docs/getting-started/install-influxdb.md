@@ -12,7 +12,12 @@ MyController supports InfluxDB 1.8.x or above
 
 {{< alert title="Warning" color="warning">}}
 In ARM v6, docker version of InfluxDB not started and no issues reported. Tested it on 1.8.4<br>
-We can directly install it on the host system by following [this guide](#install-influxdb-on-the-host-system)
+We can directly install it on the host system by following [this guide](#install-influxdb-on-the-host-system)<br>
+To know your machine architecture execute `uname -m` on the command line <br>
+```bash
+$ uname -m
+armv6l
+```
 {{< /alert >}}
 
 InfluxDB can be installed in different way. Here we are focusing to setup it on docker and InfluxDB 1.8.4 version.

@@ -97,6 +97,9 @@ outputs:
   section: ["HTML", "print"]
 
 params:
+  pageVariables:
+    version: master 
+
   copyright: "The MyController.org Authors."
   # privacy_policy: "https://policies.google.com/privacy"
 
