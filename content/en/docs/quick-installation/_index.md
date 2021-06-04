@@ -81,7 +81,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
     --volume $PWD/mycontroller.yaml:/app/mycontroller.yaml \
     --env TZ="Asia/Kolkata" \
     --restart unless-stopped \
-    quay.io/mycontroller-org/all-in-one:master
+    docker.io/mycontroller/all-in-one:master
   ```
 
 * Access MyController server Web UI
