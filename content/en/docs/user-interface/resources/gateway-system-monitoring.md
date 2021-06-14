@@ -41,7 +41,6 @@ rpi_1: # (1)
     interval: 1m
     cpuDisabled: false
     perCpuDisabled: false
-    unit: MiB
   disk: # (4)
     interval: 1h
     disabled: false
@@ -60,6 +59,7 @@ rpi_1: # (1)
     interval: 1m
     memoryDisabled: false
     swapMemoryDisabled: false
+    unit: MiB
   process: # (6)
     interval: 1m
     disabled: false

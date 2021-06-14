@@ -5,10 +5,12 @@ weight: 4
 ---
 
 {{< alert title="Supported Versions" >}}
-MyController supports natsio 2.2.2 or above
+MyController server tested on nats.io 2.2.2
 {{< /alert >}}
 
-[nats.io](https://nats.io/) server can be installed in different way. Here we are focusing to setup it on docker and NatsIO 2.2.2 version.
+[nats.io](https://nats.io/) server can be installed in different way. Here we are focusing to setup it on docker and nats.io 2.2.2 version.<br>
+
+**To install natsio on your host system [follow this guide](https://docs.nats.io/nats-server/installation#downloading-a-release-build)**
 
 {{< alert title="Note" >}}
 Assuming that you are running all the commands as a `root` user.<br>
@@ -34,6 +36,11 @@ docker run --detach --name mc_natsio \
   ```bash
   docker logs --follow mc_natsio
   ```
+
+### Stop
+```bash
+docker stop mc_natsio
+```
 
 ### Restart
 ```bash

@@ -5,10 +5,10 @@ weight: 1
 ---
 
 MyController is an IoT automation controller for home, office or any place.<br>
+There is no internet requirement for the MyController.
+You can run the complete setup on your private environment<br>
 MyController is designed to run with a limited resources.
-It can run on the first generation Raspberry PI.<br>
-There is no internet requirement for MyController.
-You can run it on a private environment
+It can run on the first generation of the Raspberry PI.<br>
 
 MyController 2.x is completely redesigned.
 

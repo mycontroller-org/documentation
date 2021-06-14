@@ -5,10 +5,13 @@ weight: 5
 ---
 
 {{< alert title="Tested Versions" >}}
-MyController tested on Mosquitto 1.6.9 or above
+MyController tested on Mosquitto 1.6.9
 {{< /alert >}}
 
 [Mosquitto](https://mosquitto.org/) broker can be installed in different way. Here we are focusing to setup it on docker and Mosquitto 1.6.9 version.
+
+
+**To install Mosquitto broker on your host system [follow this guide](https://mosquitto.org/download/)**
 
 {{< alert title="Note" >}}
 Assuming that you are running all the commands as a `root` user.<br>
