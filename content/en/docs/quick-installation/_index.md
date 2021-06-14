@@ -189,6 +189,14 @@ If you are running from non-root user, you should include `sudo` in the beginnin
     --output mycontroller.yaml
   ```
 
+#### Update mycontroller.yaml file
+* **IMPORTANT:** update your secret on the `mycontroller.yaml` file. **DO NOT USE THE DEFAULT SECRET**
+* secret can between 1 to 32 characters length
+* This secret used to encrypt your third party password, tokens used on this server
+  ```yaml
+  secret: 5a2f6ff25b0025aeae12ae096363b51a # !!! WARNING: CHANGE THIS SECRET !!!
+  ```
+
 * Update `influx_database` configuration as follows in your `mycontroller.yaml`
   * prior to this step, **influxdb** should be **installed** and **running** with a database called **mycontroller** in influxdb
   * [Influxdb installation guide](/docs/getting-started/install-influxdb)

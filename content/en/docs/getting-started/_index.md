@@ -28,8 +28,8 @@ Installation can be done in two different methods,
 ## Migrating to MyController 2.0
 * MyController 2.0 is completely redesigned.
 * You can not migrate from MyController 1.x to 2.0
-* However for sometime you can run 1.x and 2.0 simultaneously to migrate your automation
-* If you are using MySensors serial port to connect your sensors use [2mqtt](https://github.com/mycontroller-org/2mqtt) to share your connection to 1.x and 2.0
+* However for sometime you can run 1.x and 2.0 simultaneously to migrate your automation manually
+* If you are using MySensors serial port to connect your sensors use [2mqtt](https://github.com/mycontroller-org/2mqtt) to share your connection to both 1.x and 2.0
 
 ## Install MyController Server
 * [Quick Installation](/docs/quick-installation/)
