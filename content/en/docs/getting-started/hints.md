@@ -4,17 +4,17 @@ linkTitle: "Hints"
 weight: 1
 ---
 
-* if a boolean value left blank. It is consider as `false`
-* if a number value left blank, It is consider as `0`
+* if a boolean value is left blank. It is considered as `false`
+* if a numerical value is left blank, It is considered as `0`
 
 ## Values on payloads
-Payloads to a resource actions will be considered as follows<br>
+Payloads sent to a resource will be considered as follows<br>
 * case in-sensitive
 * `on`, `true`, `1`, `enable` == **true**
 * `off`, `false`, `0`, `disable` == **false**
 
 ## Duration of the time
-Across the system duration of the time follows the GoLand duration standards<br>
+System time durations follow the GoLand standards as follows...<br>
 - `ns` - nanoseconds
 - `us` - microseconds
 - `ms` - milliseconds
@@ -33,7 +33,7 @@ Across the system duration of the time follows the GoLand duration standards<br>
 |`-42s`   |-42 seconds                      |
 
 {{< alert title="Note" color="primary" >}}
-Negative number are supported.
+Negative numbers are supported.
 {{< /alert >}}
 
 ## Labels
