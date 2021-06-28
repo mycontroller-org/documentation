@@ -10,8 +10,8 @@ weight: 1
 ## Values on payloads
 Payloads sent to a resource will be considered as follows<br>
 * case in-sensitive
-* `on`, `true`, `1`, `enable` == **true**  ########should tripped be here too?#######
-* `off`, `false`, `0`, `disable` == **false**  #######likewise untripped#######
+* `on`, `true`, `1`, `enable` == **true**
+* `off`, `false`, `0`, `disable` == **false**
 
 ## Duration of the time
 System time durations follow the GoLand standards as follows...<br>
