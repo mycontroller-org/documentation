@@ -4,15 +4,13 @@ linkTitle: "Quick Installation"
 weight: 3
 ---
 
-MyController.org 2.x can be installed in different way.
-Here we are going to focus **all-in-one** setup.<br>
-all-in-one is the common setup suits for most of the users
+MyController.org 2.x can be installed in different way.<br>
 
 If the quick installation is not fulfil your requirements follow [advanced Installation guide](/docs/advanced-installation/)<br>
-To know more about all-in-one setup [follow this guide](/docs/overview/#all-in-one-bundle-and-setup)
+To know more about server setup [follow this guide](/docs/overview/#server-bundle-and-setup)
 
 ## Prerequisites
-Prerequisites to setup MyController all-in-one
+Prerequisites to setup MyController server
 * [InfluxDB Installation Guide](/docs/getting-started/install-influxdb)
 * Optional
   * [Mosquitto Installation Guide](/docs/getting-started/install-mosquitto)
@@ -45,7 +43,7 @@ Download the executable bundle that matches to your operating system architectur
 
 #### Download 
 * Here we are focusing on `arm` architecture (Raspberry Pi). You can follows this guide for other architecture too.
-* Download [mycontroller-all-in-one-{{< variable "version" >}}-linux-arm.tar.gz](https://download.mycontroller.org/v2/master/mycontroller-all-in-one-{{< variable "version" >}}-linux-arm.tar.gz)<br>
+* Download [mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz](https://download.mycontroller.org/v2/master/mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz)<br>
 
 
 {{< alert title="Note" >}}
@@ -65,8 +63,8 @@ If you want to run MyController server with `root`, you should include `sudo` in
  
   # download the bundle and extract on executable directory
   cd /opt/apps/mycontroller
-  wget https://download.mycontroller.org/v2/master/mycontroller-all-in-one-{{< variable "version" >}}-linux-arm.tar.gz
-  tar xzf mycontroller-all-in-one-{{< variable "version" >}}-linux-arm.tar.gz  --strip-components=1 --directory /opt/apps/mycontroller/executable
+  wget https://download.mycontroller.org/v2/master/mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz
+  tar xzf mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz  --strip-components=1 --directory /opt/apps/mycontroller/executable
   ```
 * now we have isolated MyController server *data* and *executables*, the expected result will be as follows,
 * **NOTE:** still, we have to keep the configuration file (`mycontroller.yaml`) file on the executable directory
@@ -75,7 +73,7 @@ If you want to run MyController server with `root`, you should include `sudo` in
   insecure_share  secure_share
   
   $ ls /opt/apps/mycontroller/executable # MyController server executable location
-  LICENSE.txt  logs  mcctl.sh  mycontroller-all-in-one  mycontroller.yaml  README.txt  web_console
+  LICENSE.txt  logs  mcctl.sh  mycontroller-server  mycontroller.yaml  README.txt  web_console
   ```
 
 #### Update mycontroller.yaml file
@@ -185,7 +183,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
   ```bash
   cd /opt/apps/mycontroller
   
-  curl https://raw.githubusercontent.com/mycontroller-org/backend/master/resources/sample-docker-all-in-one.yaml \
+  curl https://raw.githubusercontent.com/mycontroller-org/backend/master/resources/sample-docker-server.yaml \
     --output mycontroller.yaml
   ```
 
@@ -244,7 +242,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
     --volume $PWD/mycontroller.yaml:/app/mycontroller.yaml \
     --env TZ="Asia/Kolkata" \
     --restart unless-stopped \
-    docker.io/mycontroller/all-in-one:{{< variable "version" >}}
+    docker.io/mycontroller/server:{{< variable "version" >}}
   ```
 
 * Access MyController server Web UI

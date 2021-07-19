@@ -49,7 +49,8 @@ Optionally you can disable self monitoring metrics to avoid unnecessary CPU and 
   systemctl restart influxdb.service
   ```
 
-### Create a database for MyController usage in influxDB
+###  (Optional) Create a database for MyController usage in influxDB
+If the database user has admin privilege, database will be created automatically by MyController server.
 ```bash
 root@rpi-171:~# influx
 Connected to http://localhost:8086 version 1.8.5
@@ -123,7 +124,9 @@ docker run --detach --name mc_influxdb \
     influxdb:1.8.4
 ```
 
-### Create a database for MyController usage in influxDB
+### (Optional) Create a database for MyController usage in influxDB
+If the database user has admin privilege, database will be created automatically by MyController server.
+
 * enter inside running docker container
 * execute `influx` command inside the influx container as follows
 * create a database by running `create database mycontroller`
