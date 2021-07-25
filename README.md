@@ -17,7 +17,7 @@ Both released and master branch container images are published in to the followi
 
 ## Setup development environment
 ### Pre Requests
-* [HUGO](https://gohugo.io/)
+* [HUGO](https://gohugo.io/) - Install with extended support
 
 ### Setup
 ```
