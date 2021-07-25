@@ -1,7 +1,7 @@
 # MyController documentation and website
 ![publish container images](https://github.com/mycontroller-org/documentation/actions/workflows/publish_container_images.yaml/badge.svg)
 
-This repository contains MyController live [website and documentation](https://v2.mycontroller.oeg). Live always hosts master branch.<br>
+This repository contains MyController live [website and documentation](https://v2.mycontroller.org). Live always hosts master branch.<br>
 
 You can host it privately on your environment. If you are looking for a specific version.<br>
 
