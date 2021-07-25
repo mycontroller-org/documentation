@@ -2,6 +2,8 @@
 
 # update docsy
 git submodule update --init --recursive
+# get most recent changes of docsy
+# git submodule update --remote --merge
 
 # install npm dependencies
 yarn install
