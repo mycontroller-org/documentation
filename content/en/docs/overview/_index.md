@@ -10,7 +10,7 @@ You can run the complete setup on your private environment<br>
 MyController is designed to run with a limited resources.
 It can run on the first generation of the Raspberry PI.<br>
 
-MyController 2.x is completely redesigned.
+MyController 2.x is completely redesigned. You can not upgrade from MyController 1.x
 
 ## Technologies Used
 * Backend
@@ -18,13 +18,13 @@ MyController 2.x is completely redesigned.
   * [Nats.io](https://nats.io/) - Message Bus
 * Supported Databases
   * Storage
-    * In-Memory - developed and maintained by MyController.org
+    * [In-Memory](https://github.com/mycontroller-org/server/tree/master/plugin/database/storage/memory) - developed and maintained by MyController community
     * [MongoDB](https://www.mongodb.com/)
   * Metric
     * [InfluxDB](https://www.influxdata.com/products/influxdb/)
 * Frontend - Web Console
   * [ReactJS](https://reactjs.org/)
-  * [PatternFly](https://www.patternfly.org/)
+  * [PatternFly](https://www.patternfly.org/) - Web Console
   * [react-grid-layout](https://github.com/react-grid-layout/react-grid-layout) - Dashboard
 * Documentation
   * [gohugo](https://gohugo.io/)
