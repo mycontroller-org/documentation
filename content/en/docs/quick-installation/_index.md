@@ -26,7 +26,7 @@ Prerequisites to setup MyController server
 Steps to install the executable binary on your linux machine
 
 ### Download Options
-* [Released versions](https://github.com/mycontroller-org/backend/releases)
+* [Released versions](https://github.com/mycontroller-org/server/releases)
 * [Pre Released versions](https://download.mycontroller.org/v2/master/)
 
 
