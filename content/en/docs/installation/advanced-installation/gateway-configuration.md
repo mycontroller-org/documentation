@@ -12,27 +12,32 @@ Configurations should be in the **[YAML](https://yaml.org/)** file format.
 Refer [backend configuration detailed guide](/docs/advanced-installation/backend-configuration/) to know about the configurations
 
 ```yaml
-logger:
-  mode: development
-  encoding: console
-  level:
-    core: info
-    storage: info
-    metrics: warn
+# This secret should be same as given in the server configuration file.
+secret: 5a2f6ff25b0025aeae12ae096363b51a
 
 directories:
   data: /mc_home/data
   logs: /mc_home/logs
   tmp: /mc_home/tmp
 
+logger:
+  mode: record_all
+  encoding: console
+  level:
+    core: info
+    storage: info
+    metric: warn
+
 bus:
   type: natsio
   topic_prefix: mc_production
   server_url: nats://192.168.1.21:4222
-  tls_insecure_skip_verify: false
+  insecure: false
   connection_timeout: 10s
 
 gateway:
+  disabled: false
+  types: []
   ids: []
   labels:
     location: external_gw1

@@ -1,22 +1,10 @@
 ---
 title: "Quick Installation"
 linkTitle: "Quick Installation"
-weight: 3
+weight: 1
 ---
 
-MyController.org 2.x can be installed in different way.<br>
-
-If the quick installation is not fulfil your requirements follow [advanced Installation guide](/docs/advanced-installation/)<br>
-To know more about server setup [follow this guide](/docs/overview/#server-bundle-and-setup)
-
-## Prerequisites
-Prerequisites to setup MyController server
-* [InfluxDB Installation Guide](/docs/getting-started/install-influxdb)
-* Optional
-  * [Mosquitto Installation Guide](/docs/getting-started/install-mosquitto)
-  * [nats.io Installation Guide](/docs/getting-started/install-natsio)
-
-# Installation Methods
+## Installation Methods
  * [Install on Linux - Executable Binary](#install-on-linux---executable-binary)
  * [Install on Linux - Docker](#install-on-linux---docker)
 
@@ -84,28 +72,24 @@ If you want to run MyController server with `root`, you should include `sudo` in
   secret: 5a2f6ff25b0025aeae12ae096363b51a # !!! WARNING: CHANGE THIS SECRET !!!
   ```
 
-* update `influx_database` configuration as follows in your `mycontroller.yaml`
+* update influxdb configuration as follows in your `mycontroller.yaml`
   * prior to this step, **influxdb** should be **installed** and **running** with a database called **mycontroller** in influxdb
   * [Influxdb installation guide](/docs/getting-started/install-influxdb)
   * **IMPORTANT** `uri` - must point to the influxdb ip address. if you have installed on the same host, you can leave it as `127.0.0.1`
   * update other fields as per your influxdb setup
     ```yaml
-    - name: influx_database
-      type: influxdb_v2
-      uri: http://127.0.0.1:8086 # must be updated with your host ip address
-      token: 
-      username:
-      password:
-      organization: 
-      bucket: mycontroller
-      batch_size:
-      flush_interval: 1s
-    ```
-  * update `metrics` database to `influx_database`
-    ```yaml
     database:
-      storage: memory_database
-      metrics: influx_database # <-- update this field to point influx database config
+      metric:
+        disabled: false
+        type: influxdb
+        uri: http://127.0.0.1:8086 # must be updated with your host ip address
+        token:
+        username:
+        password:
+        organization_name:
+        bucket_name: mycontroller
+        batch_size:
+        flush_interval: 5s
     ```
 * if you plan to use https with ACME([Letsencrypt](https://letsencrypt.org/getting-started/)) follow the [detailed guide](/docs/advanced-installation/backend-configuration/#web-configuration)
 
@@ -118,7 +102,7 @@ If you want to run MyController server with `root`, you should include `sudo` in
       type: natsio
       topic_prefix: mc_server
       server_url: nats://127.0.0.1:4222 # must be updated with your host ip address
-      tls_insecure_skip_verify: false
+      insecure: false
       connection_timeout: 10s
     ```
 
@@ -198,25 +182,20 @@ If you are running from non-root user, you should include `sudo` in the beginnin
 * Update `influx_database` configuration as follows in your `mycontroller.yaml`
   * prior to this step, **influxdb** should be **installed** and **running** with a database called **mycontroller** in influxdb
   * [Influxdb installation guide](/docs/getting-started/install-influxdb)
-  * **IMPORTANT** `uri` - must point to the influxdb ip address
-    ```yaml
-    - name: influx_database
-      type: influxdb_v2
-      uri: http://192.168.1.21:8086 # must be updated with your host ip address
-      token: 
-      username:
-      password:
-      organization: 
-      bucket: mycontroller
-      batch_size:
-      flush_interval: 1s
-    ```
-
-  * update `metrics` database to `influx_database`
+  * **IMPORTANT** `uri` - must point to the influxdb host ip address
     ```yaml
     database:
-      storage: memory_database
-      metrics: influx_database # <-- update this field to point influx database config
+      metric:
+        disabled: false
+        type: influxdb
+        uri: http://192.168.1.21:8086 # must be updated with your host ip address
+        token:
+        username:
+        password:
+        organization_name:
+        bucket_name: mycontroller
+        batch_size:
+        flush_interval: 5s
     ```
 
 * Optional - update `bus` configuration as follows in your `mycontroller.yaml`, if you plan to use external bus
@@ -228,7 +207,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
       type: natsio
       topic_prefix: mc_communication_bus
       server_url: nats://192.168.1.21:4222 # must be updated with your host ip address
-      tls_insecure_skip_verify: false
+      insecure: false
       connection_timeout: 10s
     ```
 

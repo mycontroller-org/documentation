@@ -32,8 +32,8 @@ Installation can be done in two different methods,
 * If you are using MySensors serial port to connect your sensors, use [2mqtt](https://github.com/mycontroller-org/2mqtt) to share your sensors network to both 1.x and 2.0
 
 ## Install MyController Server
-* [Quick Installation](/docs/quick-installation/)
-* [Advanced Installation](/docs/advanced-installation/)
+* [Quick Installation](/docs/installation/quick-installation/)
+* [Advanced Installation](/docs/installation/advanced-installation/)
 
 ## What Next?
 * [Hints](/docs/getting-started/hints/)

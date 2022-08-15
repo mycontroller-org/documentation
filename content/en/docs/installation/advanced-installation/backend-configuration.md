@@ -18,9 +18,13 @@ Samples are available in the [source code repository](https://github.com/mycontr
 ```yaml
 secret: 5a2f6ff25b0025aeae12ae096363b51a # (1)
 
-web: # (2)
+analytics: # (2)
+  enabled: true 
+
+web: # (3)
   web_directory: /ui
   enable_profiling: false
+  read_timeout: 60s
   http:
     enabled: true 
     bind_address: "0.0.0.0"
@@ -39,68 +43,76 @@ web: # (2)
     email: hello@example.com
     domains: ["mycontroller.example.com"]
 
-logger: # (3)
-  mode: development
+logger: # (4)
+  mode: record_all
   encoding: console
   level:
     core: info
     web_handler: info
     storage: info
-    metrics: warn
+    metric: warn
 
-directories: # (4)
+directories: # (5)
   data: /mc_home/data
   logs: /mc_home/logs
   tmp: /mc_home/tmp
   secure_share: /mc_home/secure_share
   insecure_share: /mc_home/insecure_share
 
-bus: # (5)
+bus: # (6)
   type: natsio
   topic_prefix: mc_production
   server_url: nats://192.168.1.21:4222
-  tls_insecure_skip_verify: false
+  insecure: false
   connection_timeout: 10s
 
-gateway: # (6)
+gateway: # (7)
+  disabled: false
+  types: []
   ids: []
   labels:
-    location: core
+    location: server
 
-database: # (7)
-  storage: memory_db
-  metrics: influxdb_v1_8
+handler: # (8)
+  disabled: false
+  types: []
+  ids: []
+  labels:
+    location: server
 
-databases: # (8)
-  - name: memory_db
+database: # (9)
+  storage:
     type: memory
     dump_enabled: true
     dump_interval: 10m
     dump_dir: "memory_db"
-    dump_format: ["yaml", "json"]
+    dump_format: ["yaml"] # options: yaml, json
     load_format: "yaml"
 
-  - name: influxdb_v1_8
-    type: influxdb_v2
+  metric:
+    disabled: true
+    type: influxdb
     uri: http://192.168.1.21:8086
     token: 
     username:
     password:
-    organization: 
-    bucket: mycontroller
+    organization_name: 
+    bucket_name: mycontroller
     batch_size:
     flush_interval: 5s
+    query_client_version:
 ```
 1. `secret` is used to encrypt the password, token and other sensitive details in gateways, handlers, etc., and keep encrypted data in the storage database.<br>
    At later point if you change the `secret` you have update manually the existing passwords and tokens if any<br>
    Uses [AES-256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) encryption then base64 encoding
-2. `web` holds the [web configurations](#web-configuration)
-3. `logger` - controls the logs level of a [different components](#logger).
-4. `directories` - points to [custom locations](#directories).
-5. `bus` - [message bus configurations](#message-bus), will be used for internal communications.
-6. `gateway` - [filters](#gateway) to load gateways to this instance.
-7. `database` - says which configuration should be used for `storage` and `metrics`. Name of the configuration should be supplied. It looks the detailed configuration from `databases`list.
-8. `databases` - keeps the detailed configurations of a [different databases](#databases).
+2. `analytics` if enabled, reports anonymous statics to MyController analytics collector
+3. `web` holds the [web configurations](#web-configuration)
+4. `logger` - controls the logs level of a [different components](#logger).
+5. `directories` - points to [custom locations](#directories).
+6. `bus` - [message bus configurations](#message-bus), will be used for internal communications.
+7. `gateway` - [filters](#gateway) to load gateways to this instance.
+8. `handler` - [filters](#handler) to load handlers to this instance.
+9. `database` - defines `storage` and `metric` configuration details
 
 ### Web Configuration
 ```yaml
@@ -223,21 +235,23 @@ https_acme:
 ### Logger
 ```yaml
 logger:
-  mode: development # (1)
+  mode: record_all # (1)
   encoding: console # (2)
-  level: # (3)
+  enable_stacktrace: false # (3)
+  level: # (4)
     core: info
     web_handler: info
     storage: info
-    metrics: warn
+    metric: warn
 ```
 1. `mode` - supports two modes.
-   - `development` - prints the detailed information about the log fields
-   - `production` - prints the restricted information about the log fields
+   - `record_all` - prints the detailed information about the log fields
+   - `sampled` - prints the restricted information about the log fields and not all the logs
 2. `encoding` - log encoding format
    - `console` - suits for console display
    - `json` - prints logs in json format, suits for processing with external tools
-3. `level` - restrict the log level. supported levels: `debug`, `info`, `warn`, `error`, `fatal`.
+3. `enable_stacktrace` - enables stack trace of the error
+4. `level` - restrict the log level. supported levels: `debug`, `info`, `warn`, `error`, `fatal`.
    You can restrict the log level to a specific service.
    - `core` - entire system log level. This is applicable for gateway service too.
    - `web_handler` - http handlers log level
@@ -266,7 +280,7 @@ bus:
   type: natsio # (1)
   topic_prefix: mc_production # (2)
   server_url: nats://192.168.1.21:4222 # (12)
-  tls_insecure_skip_verify: false # (3)
+  insecure: false # (3)
   connection_timeout: 10s # (4)
 ```
 1. `type` - There are two type of [message bus](/docs/overview/architecture/#message-bus) available.
@@ -275,7 +289,7 @@ bus:
 2. `topic_prefix` - A natsio message bus can be used for different applications.
    Based on this topics we can separate a specific MyController instance.
 3. `server_url` - natsio server url
-4. `tls_insecure_skip_verify` - allow or disallow insecure connections
+4. `insecure` - allow or disallow insecure connections
 5. `connection_timeout` - connection establishment timeout
 
 {{< alert title="Important" color="danger">}}
@@ -288,111 +302,111 @@ Also should use the same message bus configurations in the MyController instance
 ### Gateway
 ```yaml
 gateway:
-  ids: [] # (1)
-  labels: # (2)
-    location: core
+  disabled: false # (1)
+  types: [] # (2)
+  ids: [] # (3)
+  labels: # (4)
+    location: server
 ```
 We can restrict to load a specific gateway to this service.
-1. `ids` - filtered by list of gateways id
-2. `labels` - filtered based on the labels. [detailed guide](/docs/user-interface/resources/gateway/#power-of-the-labels)
+1. `disabled` - enables or disables gateway service
+2. `types` - filter specific gateway types
+3. `ids` - filtered by list of gateways id
+4. `labels` - filtered based on the labels. [detailed guide](/docs/user-interface/resources/gateway/#power-of-the-labels)
 
 {{< alert title="Note">}}
 Empty filter loads all the gateways.
 {{< /alert >}}
 
-### Databases
-You can define ant number of databases.
-However only two configurations used. one for `storage` and another one is for `metrics`
+### Handler
+```yaml
+handler:
+  disabled: false # (1)
+  types: [] # (2)
+  ids: [] # (3)
+  labels: # (4)
+    location: server
+```
+We can restrict to load a specific handler to this service.
+1. `disabled` - enables or disables handler service
+2. `types` - filter specific handler types
+3. `ids` - filtered by list of handlers id
+4. `labels` - filtered based on the labels. [detailed guide](/docs/user-interface/resources/gateway/#power-of-the-labels)
 
-The `name` and `type` fields are common in across all the database configurations
+{{< alert title="Note">}}
+Empty filter loads all the handlers.
+{{< /alert >}}
+
+### Database
+You can define you `storage` and `metric` database configurations
 
 ```yaml
-databases:
-  - name: memory_db # (1)
-    type: memory # (2)
-    dump_enabled: true
-    dump_interval: 10m
-    dump_dir: "memory_db"
-    dump_format: ["yaml", "json"]
-    load_format: "yaml"
+database:
+  storage:
+    # storage database configurations
+  metric:
+    # metric database configurations
 ```
-1. `name` of the database, should a be unique name
-2. `type` of the database
-
 MyController needs two type of databases.
 1. [Storage](#storage-databases)
-2. [Metrics](#metric-databases)
+2. [Metric](#metric-databases)
 
 #### Storage Databases
 MyController supports two type of storage databases
-- [In Memory](#in-memory-database)
+- [Memory](#in-memory-database)
 - [MongoDB](#mongodb-database)
 
 ##### In Memory Database
-In memory is a special database designed by MyController.org.
+In memory is a special database designed by MyController org.
 It keeps all the configuration data in the memory(RAM).
 Dumps all the data into the disk on a specified interval.
 When MyController start up, loads all the data from the disk to memory.
 
-* We can reduce the number of writes to disk on configurations change.
-  This can increase the life time of the disk.
-* This is very good choice for a tiny hardwares(ie: Raspberry PI).
-* In-Memory database will be faster as the configurations are in memory(RAM).
+* We can reduce the number of writes to disk. This can increase the life time of the disk.
+* This is very good choice for a tiny hardwares(ie: Raspberry PI with memory card as disk).
+* Memory database will be faster as the entities are in memory(RAM).
 
 {{< alert title="Important" color="danger">}}
 **Assuming dump enabled**<br>
-When the MyController server terminated gracefully, dumps all the configuration data onto disk.<br>
+When the MyController server terminated gracefully, dumps all the configuration data onto the disk.<br>
 So there will be no loss.<br>
-However there will be some loss, if the service terminated forcefully.
+However there will be some loss, if the service terminated forcefully or power plug removed.
 {{< /alert >}}
 
 ```yaml
-name: memory_db # (1)
-type: memory # (2)
-dump_enabled: true # (3)
-dump_interval: 10m # (4)
-dump_dir: "memory_db" #(5)
-dump_format: ["yaml", "json"] # (6)
-load_format: "yaml" # (7)
+database:
+  storage:
+    type: memory # (1)
+    dump_enabled: true # (2)
+    dump_interval: 10m # (3)
+    dump_dir: "memory_db" # (4)
+    dump_format: ["yaml", "json"] # (5)
+    load_format: "yaml" # (6)
 ```
-1. `name` of the database, should be unique name
-2. `type` should be `memory`
-3. `dump_enabled` - enable or disable sync to disk feature. Copies in memory configurations to disk
-4. `dump_interval` - how long once the sync should happen.
-5. `dump_dir` - directory used to dump in memory configurations. default: `memory_db`
-6. `dump_format` - supports `yaml` and `json` formats. You can ask to dump a format or both formats
-7. `load_format` - even though you can dump configurations on `yaml` and/or `json` format. at the time of startup, only one format can be used. Make sure you are using this format on the `dump_format`
+1. `type` should be `memory`
+2. `dump_enabled` - enable or disable sync to disk feature. Copies in memory entities into disk
+3. `dump_interval` - how long once the sync should happen.
+4. `dump_dir` - directory used to dump entities from memory. default: `memory_db`
+5. `dump_format` - supports `yaml` and/or `json` formats.
+6. `load_format` - even though you can dump entities on `yaml` and/or `json` format. at the time of startup, only one format can be used. Make sure you are using this format on the `dump_format`
 
 ##### MongoDB Database
 MyController supports MongoDB local or cloud version.
 
 ```yaml
-name: mongo_local
-type: mongodb
-database: mcdb
-uri: mongodb://192.168.1.21:27017
+type: mongodb # (1)
+database: mcdb # (2)
+uri: mongodb://192.168.1.21:27017 # (3)
 ```
-1. `name` of the database, should be a unique name
-2. `type` should be `mongodb`
-3. `database` - name of the database in your MongoDB
-4. `uri` of the database. supports cloud database format too.
+1. `type` should be `mongodb`
+2. `database` - name of the database in your MongoDB
+3. `uri` of the database. supports cloud database format too.
 
 
 #### Metric Databases
 MyController supports two type of metric databases
 - [Void](#in-memory-database)
 - [InfluxDB](#mongodb-database)
-
-##### Void Database
-If you do not want track metrics in your MyController instance you can go with void database.
-It means nothing recorded.
-
-```yaml
-name: dummy_metric_database
-type: void_db
-```
-1. `name` of the database, should be unique
-2. `type` should be `void_db`
 
 ##### InfluxDB
 MyController uses InfluxDB to keep the metrics data. It can be local InfluxDB instance or can be in the cloud.<br>
@@ -407,26 +421,28 @@ As a workaround, MyController uses two type of InfluxDB query clients.
 {{< /alert >}}
 
 ```yaml
-name: influxdb_v1.8_local # (1)
-type: influxdb_v2 # (2)
-uri: http://192.168.1.21:8086 # (3)
-token: # (4)
-username: # (5)
-password: # (6)
-organization: # (7)
-bucket: mc_db # (8)
-query_client_version: # (9)
-batch_size: # (10)
-flush_interval: 1s # (11)
+database:
+  metric:
+    disabled: false # (1)
+    type: influxdb # (2)
+    uri: http://192.168.1.21:8086 # (3)
+    token: # (4)
+    username: # (5)
+    password: # (6)
+    organization_name: # (7)
+    bucket_name: mc_db # (8)
+    query_client_version: # (9)
+    batch_size: # (10)
+    flush_interval: 1s # (11)
 ```
-1. `name` of the database, should be a unique name
-2. `type` should be `influxdb_v2`
+1. `disabled` if you want to disable metric database
+2. `type` should be `influxdb`
 3. `uri` is the database connection URI
 4. `token` - authentication token used in InfluxDB 2.x
 5. `username` - authenticate using username and password
 6. `password` - authenticate using username and password. If `username` specified `password` is a mandatory field.
-7. `organization` - used in InfluxDB 2.x
-8. `bucket` - database name used for MyController. In InfluxDB 2.x it is called `bucket`
+7. `organization_name` - used in InfluxDB 2.x
+8. `bucket_name` - In influxdb 1.x it is a database name. In influxdb 2.x it is called bucket
 9. `query_client_version` - MyController uses two type of query clients.
    It is recommended to keep it blank. MyController can choose automatically based the the database version used.
    However we can override the automatic selection by providing one for the option,
@@ -437,14 +453,19 @@ flush_interval: 1s # (11)
 
 ###### Sample of Cloud InfluxDB Configuration
 ```yaml
-name: influxdb_v2_cloud
-type: influxdb_v2
-uri: https://eu-central-1-1.aws.cloud2.influxdata.com
-token: VGhpcyBpcyBmYWtlIHRva2VuLCB0YWtlIHlvdXIgZnJvbSBNb25nb0RCIGNsb3VkCg==
-organization: example@example.com
-bucket: mc_bkt
-batch_size:
-flush_interval: 1s
+database:
+  metric:
+    disabled: false
+    type: influxdb
+    uri: https://eu-central-1-1.aws.cloud2.influxdata.com
+    token: VGhpcyBpcyBmYWtlIHRva2VuLCB0YWtlIHlvdXIgZnJvbSBNb25nb0RCIGNsb3VkCg==
+    username: 
+    password: 
+    organization_name: example@example.com
+    bucket_name: mc_bkt
+    query_client_version: 
+    batch_size: 
+    flush_interval: 1s
 ```
 
 {{< alert title="Note">}}

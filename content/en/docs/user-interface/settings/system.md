@@ -1,6 +1,6 @@
 ---
 title: "System"
-linkTitle: "system"
+linkTitle: "System"
 weight: 2
 ---
 The system settings has the following configurations
