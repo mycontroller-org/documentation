@@ -148,7 +148,7 @@ params:
     # If you want this feature, but occasionally need to remove the "Feedback" section from a single page,
     # add "hide_feedback: true" to the page's front matter.
     feedback:
-      enable: true
+      enable: false
       # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
       yes: 'Thanks for your feedback!'
       no: 'Sorry to hear that. Please <a href="https://github.com/mycontroller-org/documentation/issues/new">tell us how we can improve</a>.'
@@ -157,7 +157,7 @@ params:
     # If you want this feature, but occasionally need to remove the Reading time from a single page, 
     # add "hide_readingtime: true" to the page's front matter
     readingtime:
-      enable: false
+      enable: true
 
   links:
     # End user relevant links. These will show up on left side of footer and in the community page if you have one.
