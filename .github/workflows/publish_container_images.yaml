@@ -18,7 +18,7 @@ jobs:
     - uses: peaceiris/actions-hugo@v2
       with:
         extended: true
-        hugo-version: '0.111.3'
+        hugo-version: '0.86.0'
 
     - name: Login in to docker registry
       uses: docker/login-action@v1
