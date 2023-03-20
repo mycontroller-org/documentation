@@ -6,7 +6,7 @@ weight: 1
 
 MyController backend configurations are loaded at the time of startup.<br>
 Configurations should be in the **[YAML](https://yaml.org/)** file format.<br>
-Samples are available in the [source code repository](https://github.com/mycontroller-org/server/tree/{{< variable "version" >}}/resources)
+Samples are available in the [source code repository](https://github.com/mycontroller-org/server/tree/{{< variable "versionTag" >}}/resources)
 
 {{< alert title="Note">}}
 `mycontroller.yaml` file will not be included in the backup for the security reasons.

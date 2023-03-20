@@ -98,6 +98,7 @@ outputs:
 
 params:
   pageVariables:
+    versionTag: master  # version tag used to pick exact release tag
     version: 2.0.0-devel
 
   copyright: "The MyController.org Authors."

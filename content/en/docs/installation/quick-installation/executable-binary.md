@@ -27,7 +27,7 @@ Download the executable bundle that matches to your operating system architectur
 
 #### Download 
 * Here we are focusing on `arm` architecture (Raspberry Pi). You can follows this guide for other architecture too.
-* Download [mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz](https://download.mycontroller.org/v2/master/mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz)<br>
+* Download [mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz](https://github.com/mycontroller-org/server/releases/download/{{< variable "versionTag" >}}/mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz)<br>
 
 
 {{< alert title="Note" >}}
@@ -47,7 +47,7 @@ If you want to run MyController server with `root`, you should include `sudo` in
  
   # download the bundle and extract on executable directory
   cd /opt/apps/mycontroller
-  wget https://download.mycontroller.org/v2/master/mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz
+  wget https://github.com/mycontroller-org/server/releases/download/{{< variable "versionTag" >}}/mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz
   tar xzf mycontroller-server-{{< variable "version" >}}-linux-arm.tar.gz  --strip-components=1 --directory /opt/apps/mycontroller/executable
   ```
 * now we have isolated MyController server *data* and *executables*, the expected result will be as follows,
