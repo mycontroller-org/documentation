@@ -8,6 +8,9 @@ git submodule update --init --recursive
 # install npm dependencies
 yarn install
 
+# get version details
+source ./scripts/version.sh
+
 # build
 # HUGO_ENV="production", enables google Analytics
 env HUGO_ENV="production" hugo -D
@@ -16,7 +19,7 @@ env HUGO_ENV="production" hugo -D
 REGISTRY='quay.io/mycontroller'
 ALT_REGISTRY='docker.io/mycontroller'
 IMAGE_WEBSITE="documentation"
-IMAGE_TAG=`git rev-parse --abbrev-ref HEAD`
+IMAGE_TAG=${VERSION}
 
 # debug lines
 echo $PWD

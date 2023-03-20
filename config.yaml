@@ -98,7 +98,7 @@ outputs:
 
 params:
   pageVariables:
-    version: master 
+    version: 2.0.0-devel
 
   copyright: "The MyController.org Authors."
   # privacy_policy: "https://policies.google.com/privacy"
