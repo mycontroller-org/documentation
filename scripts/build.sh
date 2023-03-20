@@ -5,8 +5,9 @@ git submodule update --init --recursive
 # get most recent changes of docsy
 # git submodule update --remote --merge
 
-# TODO: version should taken dynamically
-cd themes/docsy/ && git checkout v0.6.0
+# download dependent for docsy
+cd themes/docsy/
+yarn install
 cd -
 
 # install npm dependencies
