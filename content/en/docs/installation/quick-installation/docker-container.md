@@ -24,7 +24,7 @@ If you are running from non-root user, you should include `sudo` in the beginnin
   ```bash
   cd /opt/apps/mycontroller
   
-  curl https://raw.githubusercontent.com/mycontroller-org/backend/master/resources/sample-docker-server.yaml \
+  curl https://raw.githubusercontent.com/mycontroller-org/backend/{{< variable "versionTag" >}}/resources/sample-docker-server.yaml \
     --output mycontroller.yaml
   ```
 

@@ -18,7 +18,7 @@ MyController 2.x is completely redesigned. You can not upgrade from MyController
   * [Nats.io](https://nats.io/) - Message Bus
 * Supported Databases
   * Storage
-    * [In-Memory](https://github.com/mycontroller-org/server/tree/master/plugin/database/storage/memory) - developed and maintained by MyController community
+    * [In-Memory](https://github.com/mycontroller-org/server/tree/{{< variable "versionTag" >}}/plugin/database/storage/memory) - developed and maintained by MyController community
     * [MongoDB](https://www.mongodb.com/)
   * Metric
     * [InfluxDB](https://www.influxdata.com/products/influxdb/)
