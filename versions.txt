@@ -1,5 +1,5 @@
 # keep the next release version
-server=2.0.0
+server=2.1.0
 
 # theme docsy version
 # https://github.com/google/docsy

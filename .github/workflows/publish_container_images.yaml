@@ -2,7 +2,8 @@ name: Publish container image
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
+    tags: ["v*"]
 
 jobs:
   setup:
