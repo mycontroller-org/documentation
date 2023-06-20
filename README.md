@@ -10,10 +10,10 @@ You can host it privately on your environment. If you are looking for a specific
 
 ## Download
 ### Container images
-`master` branch images are tagged as `:master`<br>
-Both released and master branch container images are published in to the following registries,
   * [Docker Hub](https://hub.docker.com/u/mycontroller)
   * [Quay.io](https://quay.io/organization/mycontroller)
+
+`master` branch images are tagged as `:2.x.x-devel`<br>
 
 ## Setup development environment
 ### Pre Requests

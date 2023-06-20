@@ -1,7 +1,7 @@
 # refer https://gohugo.io/getting-started/configuration/
 
 baseUrl: /
-title: "MyController.org: The OpenSource Controller"
+# title: "MyController.org: The OpenSource Controller" # do not display title, we use svg log with title
 enableRobotsTXT: true
 theme: ["docsy"]
 enableGitInfo: true
@@ -47,7 +47,7 @@ markup:
 
 languages:
   en:
-    title: "MyController.org: The OpenSource Controller"
+    # title: "MyController.org: The OpenSource Controller"  # do not display title, we use svg log with title
     description: "The OpenSource Controller"
     languageName: "English"
     # Weight used for sorting.
@@ -70,7 +70,7 @@ languages:
         weight: -8
 
   ta:
-    title: "MyController.org: The OpenSource Controller"
+    # title: "MyController.org: The OpenSource Controller"  # do not display title, we use svg log with title
     description: "The OpenSource Controller"
     languageName: தமிழ்
     contentDir: "content/ta"
@@ -98,8 +98,8 @@ outputs:
 
 params:
   pageVariables:
-    versionTag: master  # version tag used to pick exact release tag
-    version: 2.0.0-devel
+    versionTag: "v2.0.0"  # version tag used to pick exact release tag
+    version: "2.0.0"
 
   copyright: "The MyController.org Authors."
   # privacy_policy: "https://policies.google.com/privacy"
